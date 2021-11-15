@@ -15,3 +15,6 @@ https://github.com/Akashic101/typescript-course/tree/748234536ac0407efc8d8828969
 
 ## Part 18: Arrays Types
 https://github.com/Akashic101/typescript-course/tree/04ace704cc2a3112735391413fccd5d57c1d8bfb
+
+## Part 19: Working with Tuples
+https://github.com/Akashic101/typescript-course/commit/a6da91cb50f7329aef966536d3bb88fbbf5a8bf4
