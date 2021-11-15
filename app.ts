@@ -13,5 +13,8 @@ function add(n1: number, n2: number) {
 const number1 = 5;
 const number2 = 2.8;
 
+console.log(`Number 1 is a ${typeof number1} with a value of ${number1}`);
+console.log(`Number 2 is a ${typeof number2} with a value of ${number2}`);
+
 const result = add(number1, number2);
-console.log(result);
+console.log(`${number1} + ${number2} = ${result}`);
