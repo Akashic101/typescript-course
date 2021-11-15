@@ -11,4 +11,4 @@ https://github.com/Akashic101/typescript-course/tree/597f95e4273ef4531a4053e96c6
 https://github.com/Akashic101/typescript-course/tree/8caec56a3ba59952a1a4bade645966f9e9e65324
 
 ## Part 16: Object Types
-https://github.com/Akashic101/typescript-course/tree/17f2bd021300afc7a17750bfbea22a2cc537dc41
+https://github.com/Akashic101/typescript-course/tree/748234536ac0407efc8d88289699662fd61c034b
