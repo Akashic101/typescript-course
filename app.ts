@@ -1,29 +1,41 @@
-const person = {
+const person1 = {
 	name: "David",
 	age: 23,
 	hobbies: ["Motorsports", "Gaming"],
+	role: [2, "Frontend-Developer"],
 };
 
 /*
-This defines a variables that needs to be an array
-of Strings with at least two elements
+TS does not know that the role-array is of a fixed length. Currently
+it can be of type number or string which is why the two functions will work
 */
 
-let favouriteFood: string[] = ["Pizza", "Noodles"];
+person1.role.push("Gamer");
+person1[1] = 10;
+
+
+
+const person2: {
+	name: string;
+	age: number;
+	hobbies: string[];
+	role: [number, string]; //This is a tuple; fixed length, fixed type
+} = {
+	name: 'David',
+	age: 23,
+	hobbies: ['Motorsports', 'Gaming'],
+	role: [2, 'Frontend-Developer'],
+};
+
+
+//array.push is an exception which TS will not catch
+
+person2.role.push('Gamer'); 
 
 /*
-If you want an array with different elements i.e. Strings and Numbers
-you can define it as a type of "any"
+This will not work since the second element must
+explicitly be a string
 */
 
-let favouriteNumber: any = ["FortyTwo", 42];
+person2.role[1] = 10; 
 
-/*
-Since person.hobbies is a string-array we can use any method
-that can be used on strings on the elements since every single element
-of a string-array must be a string as well
-*/
-
-for (const hobby of person.hobbies) {
-	console.log(hobby.toUpperCase());
-}
