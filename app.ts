@@ -1,4 +1,7 @@
 /*
+
+This is for section 2.12: https://github.com/Akashic101/typescript-course/commit/dbf020f897745723bd958ae6c3720ebd625d5224
+
 The parameters of this function need to be number
 Changing any of the parameneters into a string would
 result into an error during compilation
