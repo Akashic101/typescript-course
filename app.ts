@@ -1,22 +1,29 @@
+const person = {
+	name: "David",
+	age: 23,
+	hobbies: ["Motorsports", "Gaming"],
+};
+
 /*
-This will strictly define the type of an object
-It is better to not do this and let TS figure it out
-for itself
+This defines a variables that needs to be an array
+of Strings with at least two elements
 */
 
-const person1: {
-	name: string;
-	age: number;
-} = {
-	name: "David",
-	age: 23,
-};
+let favouriteFood: string[] = ["Pizza", "Noodles"];
 
-// This is how you should write it instead
+/*
+If you want an array with different elements i.e. Strings and Numbers
+you can define it as a type of "any"
+*/
 
-const person2 = {
-	name: "David",
-	age: 23,
-};
+let favouriteNumber: any = ["FortyTwo", 42];
 
-console.log(person1.name);
+/*
+Since person.hobbies is a string-array we can use any method
+that can be used on strings on the elements since every single element
+of a string-array must be a string as well
+*/
+
+for (const hobby of person.hobbies) {
+	console.log(hobby.toUpperCase());
+}
