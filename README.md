@@ -27,3 +27,6 @@ https://github.com/Akashic101/typescript-course/tree/32d3d6c63021c393201f4329ff4
 
 ## Part 23: Literal Types
 https://github.com/Akashic101/typescript-course/tree/82b3f03bdc592bf61e88fc582e1a28349c177eb6
+
+## Part 24: Type Aliases / Custom types
+https://github.com/Akashic101/typescript-course/tree/ccfba24b40596c5d04511a3fc2f10f8ebe2e0fc2
