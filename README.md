@@ -47,4 +47,5 @@ https://github.com/Akashic101/typescript-course/tree/0fcdccbda46a82b80fefda144cd
 https://github.com/Akashic101/typescript-course/tree/c35dbdb7dec4f4066bdc778eda8f638e89d79fc5
 
 # Section 4: Next-generation JavaScript & TypeScript
+## Part 50: Arrow Functions
 https://github.com/Akashic101/typescript-course/tree/03ff6a02d0b2bf8098ceb452d2972f550a393341
