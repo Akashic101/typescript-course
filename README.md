@@ -36,3 +36,6 @@ https://github.com/Akashic101/typescript-course/tree/b7ec69d19b4934450836800bd53
 
 ## Part 27: Functions as Types
 https://github.com/Akashic101/typescript-course/tree/9b79a92b2e1278cd7b98b7ee9b2763bae03d813f
+
+## Part 28: Function Types & Callbacks
+https://github.com/Akashic101/typescript-course/tree/a13e98af3c1070ef4305b47f930d2901678a04b1
