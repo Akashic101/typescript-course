@@ -18,3 +18,6 @@ https://github.com/Akashic101/typescript-course/tree/04ace704cc2a3112735391413fc
 
 ## Part 19: Working with Tuples
 https://github.com/Akashic101/typescript-course/commit/a6da91cb50f7329aef966536d3bb88fbbf5a8bf4
+
+## Part: Working with Enums
+https://github.com/Akashic101/typescript-course/tree/b53eff42b26ee7333f866681af076d49acd509c0
