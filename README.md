@@ -55,3 +55,6 @@ https://github.com/Akashic101/typescript-course/tree/e8ff89ca9ccf22b9203dea931de
 
 ## Part 52: The Spread Operator (...)
 https://github.com/Akashic101/typescript-course/tree/ab8e8f3e2b1f2965b35a3c24510889215e4dcbd5
+
+## Part 53: Rest parameters
+https://github.com/Akashic101/typescript-course/tree/709d69fcd0eeb60ad58d1fda3e3b4469c1ce1448
