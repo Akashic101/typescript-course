@@ -52,3 +52,6 @@ https://github.com/Akashic101/typescript-course/tree/03ff6a02d0b2bf8098ceb452d29
 
 ## Part 51: Default Function Values
 https://github.com/Akashic101/typescript-course/tree/e8ff89ca9ccf22b9203dea931de7b9341d3bab1a
+
+## Part 52: The Spread Operator (...)
+https://github.com/Akashic101/typescript-course/tree/ab8e8f3e2b1f2965b35a3c24510889215e4dcbd5
