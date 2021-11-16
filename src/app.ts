@@ -1,35 +1,13 @@
 /*
-If you have a function with a longer body it is recommened
-to use this type of writing
+Parameters of functions can have default values. Those have to be last
+in the list, giving for example a but not b a default value will not work.
 */
 
-const add1 = (a: number, b: number) => {
-	return a + b;
-};
-
-console.log(add1(3, 6));
+const add = (a: number, b: number = 1) => a + b;
 
 /*
-If your function is really short you can use this type of writing
-which is significantly shorter and easier to read
+With default parameters you can also call a function and not list the
+parameter(s) with an assigned default value
 */
 
-const add2 = (a: number, b: number) => a + b;
-
-console.log(add2(3, 6));
-
-/*
-This is a different version of an arrow-function which can also save a 
-lot of time and space
-*/
-
-const printOutput: (a: number | string) => void = (output) =>
-	console.log(output);
-
-printOutput(add1(2, 6));
-
-const button = document.querySelector("button");
-
-if (button) {
-	button.addEventListener("click", (event) => console.log(event));
-}
+console.log(add(3));
