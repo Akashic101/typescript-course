@@ -30,3 +30,6 @@ https://github.com/Akashic101/typescript-course/tree/82b3f03bdc592bf61e88fc582e1
 
 ## Part 24: Type Aliases / Custom types
 https://github.com/Akashic101/typescript-course/tree/ccfba24b40596c5d04511a3fc2f10f8ebe2e0fc2
+
+## Part 26: Function Return Types & "void"
+https://github.com/Akashic101/typescript-course/tree/b7ec69d19b4934450836800bd53aaf2624c310c8
