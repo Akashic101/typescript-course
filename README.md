@@ -39,3 +39,6 @@ https://github.com/Akashic101/typescript-course/tree/9b79a92b2e1278cd7b98b7ee9b2
 
 ## Part 28: Function Types & Callbacks
 https://github.com/Akashic101/typescript-course/tree/a13e98af3c1070ef4305b47f930d2901678a04b1
+
+## Part 29: the "unknown" Type
+https://github.com/Akashic101/typescript-course/tree/0fcdccbda46a82b80fefda144cd3fda9d84a3f7a
