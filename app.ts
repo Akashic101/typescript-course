@@ -1,21 +1,23 @@
 /*
-This function has three parameters. Two numbers that will get added together and a callback.
-A callback is a function inside a function with its own parameters and return value
+Type "unknown" different to "any". "Any" disables all checks in TS
+while unknown does not do this. "userInput" can be of any type but TS
+does not know which one it is, meaning it cannot assign its value to
+"userName" since "userInput" could also be a number
 */
 
-function addAndHandle(n1: number, n2: number, callback: (num: number) => void) {
-	const result = n1 + n2;
-	callback(result);
-}
+let userInput: unknown; //changing the type to "any" would resolve the error in L14
+let userName: string;
+
+userInput = 5;
+userInput = "David";
+
+//userName = userInput; Type 'unknown' is not assignable to type 'string'
 
 /*
-Here the function gets called. The result of the function will be saved in the callback
-under the name result which then can be used inside the function-call.
-
-This way you can be sure that the return of the callback is of the type defined in the function,
-here as an example it is a number
+This will work since TS can now be sure that userInput is of type string,
+which is why it can assign its value to userName which is of type string.
 */
 
-addAndHandle(10, 20, (result) => {
-	console.log(result);
-});
+if (typeof userInput === "string") {
+	userName = userInput;
+}
