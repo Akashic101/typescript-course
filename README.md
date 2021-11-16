@@ -49,3 +49,6 @@ https://github.com/Akashic101/typescript-course/tree/c35dbdb7dec4f4066bdc778eda8
 # Section 4: Next-generation JavaScript & TypeScript
 ## Part 50: Arrow Functions
 https://github.com/Akashic101/typescript-course/tree/03ff6a02d0b2bf8098ceb452d2972f550a393341
+
+## Part 51: Default Function Values
+https://github.com/Akashic101/typescript-course/tree/e8ff89ca9ccf22b9203dea931de7b9341d3bab1a
