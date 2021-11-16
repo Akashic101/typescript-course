@@ -1,13 +1,23 @@
 /*
-Parameters of functions can have default values. Those have to be last
-in the list, giving for example a but not b a default value will not work.
+When you want to pull out every element of an array
+you can use the spread-operator (...)
 */
 
-const add = (a: number, b: number = 1) => a + b;
+const hobbies = ["Sports", "Cookies"];
+const activeHobbies = ["Gaming"];
+
+activeHobbies.push(...hobbies);
 
 /*
-With default parameters you can also call a function and not list the
-parameter(s) with an assigned default value
+You can also pull out the values of an object and 
+assign it to a new object
 */
 
-console.log(add(3));
+const person = {
+	name: "David",
+	age: 23,
+};
+
+const copiedPerson = { ...person };
+
+console.log(copiedPerson);
