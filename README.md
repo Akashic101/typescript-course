@@ -24,3 +24,6 @@ https://github.com/Akashic101/typescript-course/tree/b53eff42b26ee7333f866681af0
 
 ## Part 22: Union Types
 https://github.com/Akashic101/typescript-course/tree/32d3d6c63021c393201f4329ff49adb4d4326f5e
+
+## Part 23: Literal Types
+https://github.com/Akashic101/typescript-course/tree/82b3f03bdc592bf61e88fc582e1a28349c177eb6
