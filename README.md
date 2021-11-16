@@ -33,3 +33,6 @@ https://github.com/Akashic101/typescript-course/tree/ccfba24b40596c5d04511a3fc2f
 
 ## Part 26: Function Return Types & "void"
 https://github.com/Akashic101/typescript-course/tree/b7ec69d19b4934450836800bd53aaf2624c310c8
+
+## Part 27: Functions as Types
+https://github.com/Akashic101/typescript-course/tree/9b79a92b2e1278cd7b98b7ee9b2763bae03d813f
