@@ -42,3 +42,6 @@ https://github.com/Akashic101/typescript-course/tree/a13e98af3c1070ef4305b47f930
 
 ## Part 29: the "unknown" Type
 https://github.com/Akashic101/typescript-course/tree/0fcdccbda46a82b80fefda144cd3fda9d84a3f7a
+
+## Part 30: the "never" Type
+https://github.com/Akashic101/typescript-course/tree/c35dbdb7dec4f4066bdc778eda8f638e89d79fc5
