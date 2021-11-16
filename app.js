@@ -1,18 +1,19 @@
-/*
-Type "unknown" different to "any". "Any" disables all checks in TS
-while unknown does not do this. "userInput" can be of any type but TS
-does not know which one it is, meaning it cannot assign its value to
-"userName" since "userInput" could also be a number
-*/
-var userInput; //changing the type to "any" would resolve the error in L14
+var userInput;
 var userName;
 userInput = 5;
 userInput = "David";
-//userName = userInput; Type 'unknown' is not assignable to type 'string'
-/*
-This will work since TS can now be sure that userInput is of type string,
-which is why it can assign its value to userName which is of type string.
-*/
 if (typeof userInput === "string") {
     userName = userInput;
 }
+/*
+JS (and TS) allow you to throw an object as an error
+This function is of type "never". It always crashes the script
+and will never return anything, neither void or undefined
+
+A while (true)-loop will also be of type never
+*/
+function generateError(message, code) {
+    throw { message: message, errorCode: code };
+}
+// Yes this is a real message/code
+generateError("I'm a teapot", 418);
