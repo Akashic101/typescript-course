@@ -1,24 +1,38 @@
-/*
-Union-types allow you to have a paremeter/variable to have different types
-With this you can use a combine function to either add two numbers or
-concetanade two strings. 
-You need an if-check since TS does not know if the variable is a number or a string
-*/
-
-function combine(input1: number | string, input2: number | string) {
-	let result;
-	if (typeof input1 === "number" && typeof input2 === "number") {
-		result = input1 + input2;
+function combine(
+	input1: number | string,
+	input2: number | string,
+	resultType: 'as-number' | 'as-text' //This is a combined union-type and a literal type.
+                                        //With this you can define your own types. Another example
+                                        //is "const n1: number = 5". This is a literal type and the
+                                        //variable is not of type number but of type 5. 
+) {
+	let result: number | string; //Not defining the type here will throw a warning as discussed in 2.15 (Type inferece)
+	
+    if (typeof input1 === "number" && typeof input2 === "number" || resultType === 'as-number') {
+		result = +input1 + +input2;
 	} else {
 		result = input1.toString() + input2.toString();
 	}
-	return result;
+
+    /*
+    If you want to force the return-value to be a number you can force its type to a number
+    by putting a + infront of it. Keep in mind doing this with a non-numerical value wil
+    return NaN (Not a Number)
+    */
+
+    // if(resultType === 'as-number') {
+    //    return +result;
+    // }
+    // else {
+    //   return result.toString();
+    // }
 }
 
-// Combining two numbers works by going into the if-statement
-const combinedAges = combine(30, 26);
+const combinedAges = combine(30, 26, "as-number");
 console.log(combinedAges);
 
-//Combining two strings works by going into the else-statement
-const combinedNames = combine("Ben", "Robert");
-console.log(combinedNames)
+const combinedStringAges = combine("30", "26", "as-number");
+console.log(combinedAges);
+
+const combinedNames = combine("Ben", "Robert", "as-text");
+console.log(combinedNames);
