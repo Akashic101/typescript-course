@@ -1,23 +1,18 @@
 /*
-When you want to pull out every element of an array
-you can use the spread-operator (...)
+Rest Parameters are parameters where you don't know how many
+you will need and/or get.
+
+The reduce-function takes all values of an array and reduces it
+a single one. "currentResult" is by default 0 and can also be defined
+by the number afte the parameters, currentValue is the
+current element of the array the function is at at the moment. 
 */
-
-const hobbies = ["Sports", "Cookies"];
-const activeHobbies = ["Gaming"];
-
-activeHobbies.push(...hobbies);
-
-/*
-You can also pull out the values of an object and 
-assign it to a new object
-*/
-
-const person = {
-	name: "David",
-	age: 23,
+const add = (...numbers: number[]) => {
+    return numbers.reduce((currentResult, currentValue) => {
+        return currentResult + currentValue;
+    }, 0);
 };
 
-const copiedPerson = { ...person };
+const addedNumbers = add(5, 1, 6, 7, 3, 5);
 
-console.log(copiedPerson);
+console.log(addedNumbers);
