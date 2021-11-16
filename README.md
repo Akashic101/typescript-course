@@ -58,3 +58,6 @@ https://github.com/Akashic101/typescript-course/tree/ab8e8f3e2b1f2965b35a3c24510
 
 ## Part 53: Rest parameters
 https://github.com/Akashic101/typescript-course/tree/709d69fcd0eeb60ad58d1fda3e3b4469c1ce1448
+
+## Part 54: Array & Object Destructering
+https://github.com/Akashic101/typescript-course/tree/d81120b914ee6a6965ab5f11bfeb6e4c6fb17c42
