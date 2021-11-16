@@ -1,17 +1,18 @@
-function add(n1, n2) {
-    return n1 + n2;
-}
-function printResult(num) {
-    console.log("Result" + num);
-}
-printResult(add(5, 23));
 /*
-This variable is designed for a function which has two parameters,
-both numbers, and the return-value must also be a number.
-This is why there is no error for the function add() but for the
-printResult()-function since the description does not fit
+This function has three parameters. Two numbers that will get added together and a callback.
+A callback is a function inside a function with its own parameters and return value
 */
-var combineValue;
-combineValue = add;
-// combineValue = printResult;
-console.log(combineValue(8, 8));
+function addAndHandle(n1, n2, callback) {
+    var result = n1 + n2;
+    callback(result);
+}
+/*
+Here the function gets called. The result of the function will be saved in the callback
+under the name result which then can be used inside the function-call.
+
+This way you can be sure that the return of the callback is of the type defined in the function,
+here as an example it is a number
+*/
+addAndHandle(10, 20, function (result) {
+    console.log(result);
+});
