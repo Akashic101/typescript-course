@@ -1,9 +1,9 @@
-function combine(input1, input2, resultType //This is a combined union-type and a literal type.
-//With this you can define your own types. Another example
-//is "const n1: number = 5". This is a literal type and the
-//variable is not of type number but of type 5. 
-) {
-    var result; //Not defining the type here will throw a warning as discussed in 2.15 (Type inferece)
+/*
+Defining a custom type (or alias) allows you to create a combination of types
+such as number & string or even a combination of literal types.
+*/
+function combine(input1, input2, resultType) {
+    var result;
     if (typeof input1 === "number" && typeof input2 === "number" || resultType === 'as-number') {
         result = +input1 + +input2;
     }

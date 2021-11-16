@@ -1,12 +1,17 @@
+/*
+Defining a custom type (or type alias) allows you to create a combination of types
+such as number & string or even a combination of literal types.
+*/
+
+type Combineable = number | string;
+type ConversationDescriptor = 'as-number' | 'as-text';
+
 function combine(
-	input1: number | string,
-	input2: number | string,
-	resultType: 'as-number' | 'as-text' //This is a combined union-type and a literal type.
-                                        //With this you can define your own types. Another example
-                                        //is "const n1: number = 5". This is a literal type and the
-                                        //variable is not of type number but of type 5. 
+	input1: Combineable,
+	input2: Combineable,
+	resultType: ConversationDescriptor
 ) {
-	let result: number | string; //Not defining the type here will throw a warning as discussed in 2.15 (Type inferece)
+	let result: number | string;
 	
     if (typeof input1 === "number" && typeof input2 === "number" || resultType === 'as-number') {
 		result = +input1 + +input2;
