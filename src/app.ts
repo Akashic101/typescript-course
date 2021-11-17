@@ -1,4 +1,12 @@
-class Department {
+/*
+If a class has an abstract method it needs to be marked as abstract
+
+Abstract classes cannot be instantiated. It is just a class that others
+can inherit from and are forced to have their own version of abstract
+methods
+*/
+
+abstract class Department {
 	/*
 	Static fields are also possible, so you can always access them without
 	instantiating a new object first
@@ -7,11 +15,16 @@ class Department {
 	static fiscalYear = 2021;
 	protected employees: string[] = [];
 
-	constructor(private readonly id: string, public name: string) {}
+	constructor(protected readonly id: string, public name: string) {}
 
-	describe(this: Department) {
-		console.log(`This department is called ${this.name} and has the ID ${this.id}`);
-	}
+	/*
+	This method is abstract, meaning that every other subclass is forced
+	to write their own version of this function
+
+	An abstract method does not have a body an needs to have a return-type
+	*/
+
+	abstract describe(this: Department): void;
 
 	addEmployee(employee: string) {
 		this.employees.push(employee);
@@ -35,14 +48,23 @@ class Department {
 	}
 }
 
+/*
+Since this class inherits from the abstract class Department it is forced
+to have an own version of the as abstract marked method describe()
+*/
+
 class ITDepartment extends Department {
 	admins: string[];
 	constructor(id: string, admins: string[]) {
 		super(id, "IT");
 		this.admins = admins;
 	}
+
+	describe() {
+		console.log("This IT-department has the id " + this.id);
+	}
 }
-class AccountingDeparment extends Department {
+class AccountingDepartment extends Department {
 	private lastReport: string;
 
 	/*
@@ -71,6 +93,10 @@ class AccountingDeparment extends Department {
 	constructor(id: string, private reports: string[]) {
 		super(id, "ACC");
 		this.lastReport = reports[0];
+	}
+
+	describe() {
+		console.log("This accounting-department has the id " + this.id);
 	}
 
 	addReport(text: string) {
@@ -102,3 +128,14 @@ no this. possible, if you want to access it you need to use the class-name
 
 const employee1 = Department.createEmployee("Nicole");
 console.log(employee1, Department.fiscalYear);
+
+const accounting = new AccountingDepartment("ACC", []);
+const it = new ITDepartment("IT", ["Ben", "Frank"]);
+
+/*
+Both objects call the same function but each will call their own version
+instead of the abstract one provided by the main class
+*/
+
+it.describe(); //calls the describe()-function of ITDepartment
+accounting.describe(); //calls he describe()-function of the AccountingDepartment
