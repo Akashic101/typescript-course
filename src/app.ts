@@ -26,13 +26,30 @@ function add(a: Combinable, b: Combinable) {
 }
 
 /*
-TS now knows that the result is of type number since both
-arguments are of that type. This way it will return a number
+TS now knows that the result is of a specific since both
+arguments are of that type. This way it will return a specific type
 instead of a Combinable
 */
 
-const resultNumber = add(1,5); //returns a number which makes a mathematical operation possible
+const resultNumber = add(1, 5); //returns a number which makes a mathematical operation possible
 console.log(Math.pow(resultNumber, 2));
 
-const resultString = add("one","five"); //returns a string which makes a string-operation possible
+const resultString = add("one", "five"); //returns a string which makes a string-operation possible
 console.log(resultString.toUpperCase());
+
+const fetchedUserData = {
+	id: "u1",
+	name: "David",
+	job: {
+		title: "CEO",
+		description: "One day maybe",
+	},
+};
+
+/*
+The ?-operator is a save way of accessing nested objects where you are
+unsure if they exist. Here TS knows for sure that the query exists, but you
+couldn't be sure about that when making a database or HTTP-request
+*/
+
+console.log(fetchedUserData?.job?.title);
