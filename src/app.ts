@@ -1,5 +1,11 @@
 class Department {
-	private employees: string[] = [];
+
+	/*
+	This field is no longer private but protected meaning it can be
+	accessed by sub classes but still not outside of the class itself
+	*/
+	  
+	protected employees: string[] = [];
 
 	constructor(private readonly id: string, public name: string) {}
 
@@ -57,6 +63,24 @@ class AccountingDeparment extends Department {
 	getReports() {
 		console.log(this.reports);
 	}
+
+	/*
+	private properties are only availabe in the main class, but cannot
+	be accessed in sub-classes which inherit from the main class
+
+	This function only works because the employees-field is protected,
+	meaning that every sub-class which inherits from the main-class
+	can edit the values of fields, but is still not accessible outside
+	of the class
+	*/
+
+	addEmployee(name: string) {
+		if (name == "Ben") {
+			return;
+		} else {
+			this.employees.push(name);
+		}
+	}
 }
 
 const it = new ITDepartment("IT", ["Christoph", "Ammo"]);
@@ -70,9 +94,10 @@ accounting.addReport("Babies second report");
 accounting.getReports();
 
 /*
-Since the class AccountingDepartment inherits from Department we can
-also use the functions of it for the sub-class
+Since the class AccountingDepartment inherits from Department AND employees
+is protected, not private, we can also use the functions
+of it for the sub-class
 */
 
-accounting.addEmployee("Frank");
+accounting.addEmployee("Benu");
 accounting.printEmployeeInfo();
