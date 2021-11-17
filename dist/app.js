@@ -15,7 +15,20 @@ class Department {
         console.log("The department " + this.name + " has " + this.employees.length + " employee(s)");
         console.log(this.employees);
     }
+    /*
+    This method being static means it can be called without creating a new
+    object first. It works like Math for example where you can always call
+    Math.pi without having to write "const math = new Math"
+    */
+    static createEmployee(name) {
+        return { name: name };
+    }
 }
+/*
+Static fields are also possible, so you can always access them without
+instantiating a new object first
+*/
+Department.fiscalYear = 2021;
 class ITDepartment extends Department {
     constructor(id, admins) {
         super(id, "IT");
@@ -64,18 +77,14 @@ class AccountingDeparment extends Department {
         }
     }
 }
-const it = new ITDepartment("IT", ["Christoph", "Ammo"]);
-console.log(it);
-const accounting = new AccountingDeparment("ACC", []);
-console.log(accounting);
 /*
-Without calling the addReport()-function first this will throw an error
-that was created inside the getter
+A new object gets created but without the need of a new class first.
+You can also access the static field of a class without the need of instantiating
+one first
 
-console.log(accounting.mostRecentReport);
+Keep in mind that you cannot access static properties in non-static instances
+no this. possible, if you want to access it you need to use the class-name
 */
-accounting.addReport("Babies first report");
-accounting.getReports();
-accounting.mostRecentReport = "This is a added report with the setter";
-accounting.getReports();
+const employee1 = Department.createEmployee("Nicole");
+console.log(employee1, Department.fiscalYear);
 //# sourceMappingURL=app.js.map
