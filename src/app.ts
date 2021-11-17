@@ -1,11 +1,14 @@
+interface Named {
+	readonly name: String;
+}
+
 /*
-You can make a field of an interface readonly, but not private, static
-or abstract
+You can extend interfaces meaning that one interface is extended from another
+and whatever class implements the interface needs to satisfy the requirements of both
+interfaces
 */
 
-interface Greetable {
-	readonly name: String;
-
+interface Greetable extends Named {
 	greet(phrase: string): void;
 }
 
@@ -17,7 +20,7 @@ on top of that.
 You can implement more than one interface (seperated by a comma), not like with classes
 */
 
-class Person implements Greetable {
+class Person implements Greetable, Named {
 	name: string;
 	age = 23;
 

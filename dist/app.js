@@ -1,9 +1,5 @@
 "use strict";
 /*
-You can make a field of an interface readonly, but not private, static
-or abstract
-*/
-/*
 Implementing an interface forces the class to adhere to the interface. The class
 needs to have the same fields and functions as the interface,
 but you can also add your own fields and functions inside the class
