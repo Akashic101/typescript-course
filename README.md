@@ -116,3 +116,6 @@ https://github.com/Akashic101/typescript-course/tree/68026504d533f19eb3f4392ce50
 
 ## Part 83: Intersection Types
 https://github.com/Akashic101/typescript-course/tree/8992b3b5d96bfcaad51be45999f90d3f69dcacb5
+
+## Part 85: More on Type Guards
+https://github.com/Akashic101/typescript-course/tree/6c0c6b7ec468a6c2d64ba6d5bb399bd6e6f4e7c9
