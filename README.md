@@ -119,3 +119,6 @@ https://github.com/Akashic101/typescript-course/tree/8992b3b5d96bfcaad51be45999f
 
 ## Part 85: More on Type Guards
 https://github.com/Akashic101/typescript-course/tree/6c0c6b7ec468a6c2d64ba6d5bb399bd6e6f4e7c9
+
+## Part: Discriminated Unions
+https://github.com/Akashic101/typescript-course/tree/273e8310e5d24b1c0a77e84c37da393696fd9d06
