@@ -89,3 +89,6 @@ https://github.com/Akashic101/typescript-course/tree/7cbd72e05d4568fa2ccf927ed9d
 
 ## Part 68: Static Methods & Properties
 https://github.com/Akashic101/typescript-course/tree/ffa4b489f98daefbe7775e73f8d1d6ad92281aa4
+
+## Part 69: Abstract Classes
+https://github.com/Akashic101/typescript-course/tree/e53cd0d7607414efce668bf7e00706eefac5d850
