@@ -53,3 +53,24 @@ couldn't be sure about that when making a database or HTTP-request
 */
 
 console.log(fetchedUserData?.job?.title);
+
+const userInput = "";
+
+/*
+If the first value is undefined or null
+TS will revert to the second option. The problem is that an
+empty string '' would trigger the default second option
+*/
+
+const storedData = userInput || "DEFAULT";
+
+console.log({ storedData });
+
+/*
+For that exists the ??-operator which takes care of that edge-case
+as well
+*/
+
+const correctlyStoredData = userInput ?? "DEFAULT";
+
+console.log({ correctlyStoredData });
