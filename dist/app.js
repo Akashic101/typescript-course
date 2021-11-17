@@ -1,8 +1,5 @@
 "use strict";
 class Department {
-    /*
-    The readonly property is TS-only
-    */
     constructor(id, name) {
         this.id = id;
         this.name = name;
@@ -15,24 +12,54 @@ class Department {
         this.employees.push(employee);
     }
     printEmployeeInfo() {
-        console.log('The department ' + this.name + ' has ' + this.employees.length + ' employees');
+        console.log("The department " + this.name + " has " + this.employees.length + " employee(s)");
         console.log(this.employees);
     }
 }
 /*
-Now you will need two parameters when creating an object, id and name
-*/
-const accounting = new Department('ACC', 'Accounting');
-/*
-Cannot assign to 'id' because it is a read-only property.
+"Extends" means that a class inherits the constructor and methods of the class
+mentioned. You can only inherit from one class
 
-accounting.id = 'PC3';
+When inheriting a class you need to call super() which calls the constructor
+of the base-class from inside the sub-class
+
+You first need to call super(), then you can work with this
+
+Writing it like this is the long way and for demonstration
 */
-console.log(accounting); //Department {name: 'Accounting'}
-console.log(accounting.name); //Accounting
+class ITDepartment extends Department {
+    constructor(id, admins) {
+        super(id, "IT");
+        this.admins = admins;
+    }
+}
 /*
-You can still read the value of id since the function is inside the
-class and the value is only read, not changed
+This is the shorter way of creating a class with the fields
+build into the constructor itself. It still gets the ID from the main
+Department-class but has its own unique functions no other class has
 */
-accounting.describe(); //This department is called Accounting and has the ID ACC
+class AccountingDeparment extends Department {
+    constructor(id, reports) {
+        super(id, "ACC");
+        this.reports = reports;
+    }
+    addReport(text) {
+        this.reports.push(text);
+    }
+    getReports() {
+        console.log(this.reports);
+    }
+}
+const it = new ITDepartment("IT", ["Christoph", "Ammo"]);
+console.log(it);
+const accounting = new AccountingDeparment("ACC", ["Babies first report"]);
+console.log(accounting);
+accounting.addReport("Babies second report");
+accounting.getReports();
+/*
+Since the class AccountingDepartment inherits from Department we can
+also use the functions of it for the sub-class
+*/
+accounting.addEmployee("Frank");
+accounting.printEmployeeInfo();
 //# sourceMappingURL=app.js.map
