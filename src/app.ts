@@ -67,7 +67,6 @@ function printEmployeeInfo(emp: UnknownEmployee) {
 
 printEmployeeInfo(e1);
 
-
 class Car {
 	drive() {
 		console.log("Driving in a car...");
@@ -97,10 +96,52 @@ vanilla JS and also available in TS
 
 function useVehicle(vehicle: Vehicle) {
 	vehicle.drive();
-	if(vehicle instanceof Truck) {
+	if (vehicle instanceof Truck) {
 		vehicle.loadCargo(1000);
 	}
 }
 
 useVehicle(v1);
 useVehicle(v2);
+
+/*
+instanceof would not work here since we are working with an interface,
+not a type
+*/
+
+interface Bird {
+	type: "bird";
+	flyingSpeed: number;
+}
+
+interface Horse {
+	type: "horse";
+	runSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+/*
+Here we can check with a switch-statement which type of animal we
+are dealing since both interfaces share the same (discriminated) property. Inside the
+switch-statement we can then set a local variable to the needed value
+*/
+
+function moveAnimals(animal: Animal) {
+	let speed;
+	switch (animal.type) {
+		case "bird":
+			speed = animal.flyingSpeed;
+			break;
+		case "horse":
+			speed = animal.runSpeed;
+			break;
+	}
+	console.log("Moving at speed: " + speed);
+}
+
+/*
+We can also create an object on the fly by writing it in {}
+*/
+
+moveAnimals({ type: "bird", flyingSpeed: 10000 });

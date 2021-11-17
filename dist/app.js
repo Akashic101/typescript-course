@@ -59,4 +59,25 @@ function useVehicle(vehicle) {
 }
 useVehicle(v1);
 useVehicle(v2);
+/*
+Here we can check with a switch-statement which type of animal we
+are dealing since both interfaces share the same (discriminated) property. Inside the
+switch-statement we can then set a local variable to the needed value
+*/
+function moveAnimals(animal) {
+    let speed;
+    switch (animal.type) {
+        case "bird":
+            speed = animal.flyingSpeed;
+            break;
+        case "horse":
+            speed = animal.runSpeed;
+            break;
+    }
+    console.log("Moving at speed: " + speed);
+}
+/*
+We can also create an object on the fly by writing it in {}
+*/
+moveAnimals({ type: "bird", flyingSpeed: 10000 });
 //# sourceMappingURL=app.js.map
