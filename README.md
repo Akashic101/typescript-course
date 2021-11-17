@@ -113,3 +113,6 @@ https://github.com/Akashic101/typescript-course/tree/ed0ce3d5427defa6cb76c9023b5
 
 ## Part 78: Optional Parameters & Properties
 https://github.com/Akashic101/typescript-course/tree/68026504d533f19eb3f4392ce50405b6902c4e3a
+
+## Part 83: Intersection Types
+https://github.com/Akashic101/typescript-course/tree/8992b3b5d96bfcaad51be45999f90d3f69dcacb5
