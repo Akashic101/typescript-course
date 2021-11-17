@@ -1,24 +1,17 @@
 "use strict";
-/*
-You can mark a property as private meaning only functions inside
-the class can access it
-
-This also works on functions/methods
-*/
 class Department {
-    constructor(n) {
-        this.employees = [];
-        this.name = n;
-    }
     /*
-    The this-keywoard will always check for the value of the
-    object it has been called on
-
-    Adding a 'parameter' here will force any object to have a
-    name-value when calling the describe()-function
+    This way of creating a class is much shorter. You do have to write
+    the access modifier to it, no matter if public or private, and the
+    parameter has to have the same name as the full variable, no shortcuts
     */
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+        this.employees = [];
+    }
     describe() {
-        console.log("This department is called " + this.name);
+        console.log(`This department is called ${this.name} and has the ID ${this.id}`);
     }
     addEmployee(employee) {
         this.employees.push(employee);
@@ -29,47 +22,10 @@ class Department {
     }
 }
 /*
-This is how you define a new object of the class Department. You can log
-the complete object or just single attributes as well
+Now you will need two parameters when creating an object, id and name
 */
-const accounting = new Department("Accounting");
+const accounting = new Department('ACC', 'Accounting');
 console.log(accounting); //Department {name: 'Accounting'}
 console.log(accounting.name); //Accounting
-accounting.describe(); //This department is called Accounting
-/*
-This is the tricky part of the this-keywoard. Here a new object is
-created but its describe-property is a pointer to the describe()-function
-of the accounting-object. But it does not have a name so the value is undefined
-*/
-const accountingCopy = { describe: accounting.describe };
-/*
-accountingCopy.describe();
-
-This will result into an error since the
-accountCopy-object has no name-value
-*/
-/*
-Now this code would not work since the object does have a name-parameter, but
-no employees-array
-
-
-const accountingCopy2 = { name: "HR", describe: accounting.describe };
-
-accountingCopy2.describe(); //This department is called HR
-*/
-accounting.addEmployee('Ben');
-accounting.addEmployee('Robert');
-accounting.printEmployeeInfo();
-/*
-Accessing and modifiying an object like this when functions
-like addEmployee() exist should not be allowed
-
-Since the employees-value is private it cannot be accessed by a
-function outside the Department-class
-*/
-//accounting.employees[2] = 'Thea';
-/*
-This will work since the name-value is public (by default)
-*/
-accounting.name = 'stupid department';
+accounting.describe(); //This department is called Accounting and has the ID ACC
 //# sourceMappingURL=app.js.map
