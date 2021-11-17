@@ -145,3 +145,16 @@ We can also create an object on the fly by writing it in {}
 */
 
 moveAnimals({ type: "bird", flyingSpeed: 10000 });
+
+/*
+Here you see two types of Type-casting. The first one works by putting the specific type
+in angle-brackets <> before the selector, this can however clash with frontends such as React
+
+The second way uses the "as" at the end to specifically cast it to a certain type. Keep in mind
+to add an ! at the end of the selector so TS knows that the element cannot be Null and definitely
+exists in your code
+*/
+
+//const userInputElement = <HTMLInputElement>document.getElementById("user-input")!;
+const userInputElement = document.getElementById("user-input")! as HTMLInputElement;
+userInputElement.value = "Hi there";
