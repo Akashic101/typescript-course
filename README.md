@@ -68,3 +68,6 @@ https://github.com/Akashic101/typescript-course/tree/5afc6b3645b100807d64e356a8d
 
 ## Part 61: Constructor Functions & The "this" Keyword
 https://github.com/Akashic101/typescript-course/tree/96659ca6b9ee84ffa7f39a821e30482caf231cef
+
+## Part 62: "private" and "public" Access Modifiers
+https://github.com/Akashic101/typescript-course/tree/2c84510b6c15a241ec3f31e61f2d602231e9b3be
