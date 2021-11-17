@@ -2,12 +2,10 @@ class Department {
 	private employees: string[] = [];
 
 	/*
-	This way of creating a class is much shorter. You do have to write
-	the access modifier to it, no matter if public or private, and the 
-	parameter has to have the same name as the full variable, no shortcuts
+	The readonly property is TS-only
 	*/
 
-	constructor(private id: string, public name: string) {
+	constructor(private readonly id: string, public name: string) {
 	}
 
 	describe(this: Department) {
@@ -30,7 +28,18 @@ Now you will need two parameters when creating an object, id and name
 
 const accounting = new Department('ACC', 'Accounting');
 
+/*
+Cannot assign to 'id' because it is a read-only property.
+
+accounting.id = 'PC3';
+*/
+
 console.log(accounting); //Department {name: 'Accounting'}
 console.log(accounting.name); //Accounting
+
+/*
+You can still read the value of id since the function is inside the
+class and the value is only read, not changed
+*/
 
 accounting.describe(); //This department is called Accounting and has the ID ACC
