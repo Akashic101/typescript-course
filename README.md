@@ -102,5 +102,8 @@ https://github.com/Akashic101/typescript-course/tree/e6ec5cab76d2642803f5c3a1c01
 ## Part 73: Using Interfaces with Classes
 https://github.com/Akashic101/typescript-course/tree/2023c619cd0eae3f14c8f441f687c511424929a3
 
-##Part 75: Readonly Interface Properties
+## Part 75: Readonly Interface Properties
 https://github.com/Akashic101/typescript-course/tree/4e8e72a2cb75e4b206ee15a833f814fbcd41b638
+
+## Part 76: Extending Interfaces
+https://github.com/Akashic101/typescript-course/tree/f97dbe446f16ee9e836e3cd1cfaa2a202a10d229
