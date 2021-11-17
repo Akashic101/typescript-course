@@ -156,5 +156,32 @@ exists in your code
 */
 
 //const userInputElement = <HTMLInputElement>document.getElementById("user-input")!;
-const userInputElement = document.getElementById("user-input")! as HTMLInputElement;
+const userInputElement = document.getElementById(
+	"user-input"
+)! as HTMLInputElement;
 userInputElement.value = "Hi there";
+
+/*
+Whatever property will be defined with this interface, no matter the count,
+has a name which can be identified as a string and is of type string
+
+Here in this example every object defined by this interface must have a id
+and can have a limitless amount of properties of type string
+The set properties (here id) must be of the same type as the index-properties
+*/
+
+interface ErrorContainer {
+	id: string;
+	[prop: string]: string;
+}
+
+/*
+This object must have an id-property, but the rest is all optional.
+You can add as many properties as you want or none at all
+*/
+
+const errorBag: ErrorContainer = {
+	id: "em1",
+	errorMessage: "Not a valid email!",
+	userName: "Must start with a captial character!",
+};

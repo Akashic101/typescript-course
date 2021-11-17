@@ -91,4 +91,13 @@ exists in your code
 //const userInputElement = <HTMLInputElement>document.getElementById("user-input")!;
 const userInputElement = document.getElementById("user-input");
 userInputElement.value = "Hi there";
+/*
+This object must have an id-property, but the rest is all optional.
+You can add as many properties as you want or none at all
+*/
+const errorBag = {
+    id: "em1",
+    errorMessage: "Not a valid email!",
+    userName: "Must start with a captial character!",
+};
 //# sourceMappingURL=app.js.map
