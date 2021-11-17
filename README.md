@@ -95,3 +95,6 @@ https://github.com/Akashic101/typescript-course/tree/e53cd0d7607414efce668bf7e00
 
 ## Part 70: Singletons & Private Constructors
 https://github.com/Akashic101/typescript-course/tree/0d3058c19cf11449cd6bde96e042a2e8cb51f955
+
+##Part 5.72: A first interface
+https://github.com/Akashic101/typescript-course/tree/e6ec5cab76d2642803f5c3a1c014b04aaf80cc34
