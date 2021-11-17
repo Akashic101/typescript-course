@@ -1,10 +1,4 @@
 class Department {
-
-	/*
-	This field is no longer private but protected meaning it can be
-	accessed by sub classes but still not outside of the class itself
-	*/
-	  
 	protected employees: string[] = [];
 
 	constructor(private readonly id: string, public name: string) {}
@@ -25,18 +19,6 @@ class Department {
 	}
 }
 
-/*
-"Extends" means that a class inherits the constructor and methods of the class
-mentioned. You can only inherit from one class
-
-When inheriting a class you need to call super() which calls the constructor
-of the base-class from inside the sub-class
-
-You first need to call super(), then you can work with this
-
-Writing it like this is the long way and for demonstration
-*/
-
 class ITDepartment extends Department {
 	admins: string[];
 	constructor(id: string, admins: string[]) {
@@ -44,35 +26,45 @@ class ITDepartment extends Department {
 		this.admins = admins;
 	}
 }
-
-/*
-This is the shorter way of creating a class with the fields
-build into the constructor itself. It still gets the ID from the main
-Department-class but has its own unique functions no other class has
-*/
-
 class AccountingDeparment extends Department {
+	private lastReport: string;
+
+	/*
+	This getter is able to get a value of a field inside the class
+	Checking if that value exists is probably a good idea
+	*/
+
+	get mostRecentReport() {
+		if (this.lastReport) {
+			return this.lastReport;
+		} else {
+			throw new Error("No report found");
+		}
+	}
+
+	/*
+	This setter does basically the same thing as the addReport()-function.
+	Since it has a parameter it overloads the getter which does not have
+	a paremeter so both functions can have the same name.
+	*/
+
+	set mostRecentReport(value: string) {
+		this.addReport(value);
+	}
+
 	constructor(id: string, private reports: string[]) {
 		super(id, "ACC");
+		this.lastReport = reports[0];
 	}
 
 	addReport(text: string) {
 		this.reports.push(text);
+		this.lastReport = text;
 	}
 
 	getReports() {
 		console.log(this.reports);
 	}
-
-	/*
-	private properties are only availabe in the main class, but cannot
-	be accessed in sub-classes which inherit from the main class
-
-	This function only works because the employees-field is protected,
-	meaning that every sub-class which inherits from the main-class
-	can edit the values of fields, but is still not accessible outside
-	of the class
-	*/
 
 	addEmployee(name: string) {
 		if (name == "Ben") {
@@ -87,17 +79,21 @@ const it = new ITDepartment("IT", ["Christoph", "Ammo"]);
 
 console.log(it);
 
-const accounting = new AccountingDeparment("ACC", ["Babies first report"]);
+const accounting = new AccountingDeparment("ACC", []);
 
 console.log(accounting);
-accounting.addReport("Babies second report");
-accounting.getReports();
 
 /*
-Since the class AccountingDepartment inherits from Department AND employees
-is protected, not private, we can also use the functions
-of it for the sub-class
+Without calling the addReport()-function first this will throw an error
+that was created inside the getter
+
+console.log(accounting.mostRecentReport);
 */
 
-accounting.addEmployee("Benu");
-accounting.printEmployeeInfo();
+accounting.addReport("Babies first report");
+
+accounting.getReports();
+
+accounting.mostRecentReport = "This is a added report with the setter";
+
+accounting.getReports();
