@@ -131,3 +131,6 @@ https://github.com/Akashic101/typescript-course/tree/daf550c400c7eaae5ac0cb85506
 
 ## Part 88: Function Overloads
 https://github.com/Akashic101/typescript-course/tree/1220da7e84febf6ee3a3032d5081335e61b3ef51
+
+## Part 89: Operational chaining
+https://github.com/Akashic101/typescript-course/tree/44f6b2b32348a4e36785189387e6289749f3445e
