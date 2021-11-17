@@ -71,3 +71,6 @@ https://github.com/Akashic101/typescript-course/tree/96659ca6b9ee84ffa7f39a821e3
 
 ## Part 62: "private" and "public" Access Modifiers
 https://github.com/Akashic101/typescript-course/tree/2c84510b6c15a241ec3f31e61f2d602231e9b3be
+
+## Part 63: Shorthand Initialization
+https://github.com/Akashic101/typescript-course/tree/19f7423cb16015d4cab11090d85bfaf9f4299945
