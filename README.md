@@ -74,3 +74,6 @@ https://github.com/Akashic101/typescript-course/tree/2c84510b6c15a241ec3f31e61f2
 
 ## Part 63: Shorthand Initialization
 https://github.com/Akashic101/typescript-course/tree/19f7423cb16015d4cab11090d85bfaf9f4299945
+
+## Part 64: "readonly" properties
+https://github.com/Akashic101/typescript-course/tree/d27624819ac70c8ce45a82d9ceaa3e74d59d0877
