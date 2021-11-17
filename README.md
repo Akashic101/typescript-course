@@ -61,3 +61,7 @@ https://github.com/Akashic101/typescript-course/tree/709d69fcd0eeb60ad58d1fda3e3
 
 ## Part 54: Array & Object Destructering
 https://github.com/Akashic101/typescript-course/tree/d81120b914ee6a6965ab5f11bfeb6e4c6fb17c42
+
+# Section 5: Classes & Interfaces
+## Part 59: Creating a first class
+https://github.com/Akashic101/typescript-course/tree/5afc6b3645b100807d64e356a8d28355468ccc84
