@@ -83,3 +83,6 @@ https://github.com/Akashic101/typescript-course/tree/ffb28f083bd1636bdacf394fcac
 
 ## Part 66: Overriding Properties & The "protected" Modifier
 https://github.com/Akashic101/typescript-course/tree/0ca716fe85c5ba9ab984c4fee62fe0b71afa3a25
+
+## Part 67: Getters & Setters
+https://github.com/Akashic101/typescript-course/tree/7cbd72e05d4568fa2ccf927ed9d59b203ff498cd
