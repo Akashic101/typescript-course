@@ -47,6 +47,9 @@ class ITDepartment extends Department {
     }
 }
 class AccountingDepartment extends Department {
+    /*
+    Marking a constructor as private means that only one of them can exist
+    */
     constructor(id, reports) {
         super(id, "ACC");
         this.reports = reports;
@@ -71,6 +74,20 @@ class AccountingDepartment extends Department {
     */
     set mostRecentReport(value) {
         this.addReport(value);
+    }
+    /*
+    With this method you force the program to create a single
+    instance of an accountingDepartment. If one already exists it will
+    return the exisiting one.
+    */
+    static getInstance() {
+        if (AccountingDepartment.instance) {
+            return this.instance;
+        }
+        else {
+            this.instance = new AccountingDepartment('ACC2', []);
+            return this.instance;
+        }
     }
     describe() {
         console.log("This accounting-department has the id " + this.id);
@@ -101,12 +118,19 @@ no this. possible, if you want to access it you need to use the class-name
 */
 const employee1 = Department.createEmployee("Nicole");
 console.log(employee1, Department.fiscalYear);
-const accounting = new AccountingDepartment("ACC", []);
-const it = new ITDepartment("IT", ["Ben", "Frank"]);
 /*
-Both objects call the same function but each will call their own version
-instead of the abstract one provided by the main class
+No matter how often you create an instance of this class it will
+always return the same one. Creating one manually is not possible since
+the constructor is private and not accessible outside the class
 */
-it.describe(); //calls the describe()-function of ITDepartment
-accounting.describe(); //calls he describe()-function of the AccountingDepartment
+//const accounting = new AccountingDepartment("ACC", []); //will not work since the onstructor is private
+/*
+Those three instances will be all exactly the same created in the getInstance()-function
+*/
+const accounting1 = AccountingDepartment.getInstance();
+const accounting2 = AccountingDepartment.getInstance();
+const accounting3 = AccountingDepartment.getInstance();
+console.log({ accounting1 }); //Will return
+console.log({ accounting2 }); //the same as
+console.log({ accounting2 }); //the other ones
 //# sourceMappingURL=app.js.map
