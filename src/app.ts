@@ -1,38 +1,22 @@
 /*
-Array destructering works by pulling out each element of an array from left-to-right
-and storing it in a variable assigned on the left side of the equal-sign
-
-You can also use the spread-operator to store the rest of the elements which have
-not been assigned in a new array. The original array will not be changed
+A class is defined by its attributes which are defined by their name and type.
+After that follows the constructor with those attributes as a parameter
 */
 
-const hobbies: string[] = ["gaming", "motorsports", "biking", "reading"];
+class Department {
+	name: string;
 
-const [hobby1, hobby2, ...remainingHobbies] = hobbies;
-
-console.log({hobby1});
-console.log({remainingHobbies});
+	constructor(n: string) {
+		this.name = n;
+	}
+}
 
 /*
-This way of destructering also works on objects
+This is how you define a new object of the class Department. You can log
+the complete object or just single attributes as well
 */
 
-const person = {
-	firstName: "David",
-	age: 23,
-};
+const accounting = new Department('Accounting');
 
-/*
-This is not Type infering but an alias. The variable is not of type userName
-but saved as userName
-*/
-
-const { firstName: userName, age } = person;
-
-console.log({userName});
-console.log({age});
-
-/*
-Writing a variable in curly-brackets like {this} gives out not only the value
-of the variable but also the name for easier identifying. Isn't that neat?
-*/
+console.log(accounting);
+console.log(accounting.name);
