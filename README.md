@@ -110,3 +110,6 @@ https://github.com/Akashic101/typescript-course/tree/f97dbe446f16ee9e836e3cd1cfa
 
 ## Part 77: Interfaces as function types
 https://github.com/Akashic101/typescript-course/tree/ed0ce3d5427defa6cb76c9023b5f86a4d2f62c02
+
+## Part 78: Optional Parameters & Properties
+https://github.com/Akashic101/typescript-course/tree/68026504d533f19eb3f4392ce50405b6902c4e3a
