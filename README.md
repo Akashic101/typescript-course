@@ -125,3 +125,6 @@ https://github.com/Akashic101/typescript-course/tree/273e8310e5d24b1c0a77e84c37d
 
 ## Part 86: Type Casting 
 https://github.com/Akashic101/typescript-course/tree/a01e360916773e034034a2d7dc739145703dcb9a
+
+## Part 87: Index Properties
+https://github.com/Akashic101/typescript-course/tree/daf550c400c7eaae5ac0cb85506c965917b55827
