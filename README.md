@@ -98,3 +98,6 @@ https://github.com/Akashic101/typescript-course/tree/0d3058c19cf11449cd6bde96e04
 
 ##Part 5.72: A first interface
 https://github.com/Akashic101/typescript-course/tree/e6ec5cab76d2642803f5c3a1c014b04aaf80cc34
+
+##Part 5.73: Using Interfaces with Classes
+https://github.com/Akashic101/typescript-course/tree/2023c619cd0eae3f14c8f441f687c511424929a3
