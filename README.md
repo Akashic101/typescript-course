@@ -128,3 +128,6 @@ https://github.com/Akashic101/typescript-course/tree/a01e360916773e034034a2d7dc7
 
 ## Part 87: Index Properties
 https://github.com/Akashic101/typescript-course/tree/daf550c400c7eaae5ac0cb85506c965917b55827
+
+## Part 88: Function Overloads
+https://github.com/Akashic101/typescript-course/tree/1220da7e84febf6ee3a3032d5081335e61b3ef51
