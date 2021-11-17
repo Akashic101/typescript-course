@@ -1,5 +1,15 @@
 "use strict";
 /*
+Interfaces can define the type of a function as well. Here we have
+a interface which has two arguments, both of type number, and a return-value
+of type number as well
+
+We can then create a new functions of the custom type of the interface
+*/
+let add = (n1, n2) => {
+    return n1 + n2;
+};
+/*
 Implementing an interface forces the class to adhere to the interface. The class
 needs to have the same fields and functions as the interface,
 but you can also add your own fields and functions inside the class

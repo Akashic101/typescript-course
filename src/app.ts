@@ -1,3 +1,21 @@
+/*
+Interfaces can define the type of a function as well. Here we have
+a interface which has two arguments, both of type number, and a return-value
+of type number as well
+
+We can then create a new functions of the custom type of the interface
+*/
+
+interface AddFn {
+	(a: number, b: number): number;
+}
+
+let add: AddFn = (n1: number, n2: number) => {
+	return n1 + n2;
+};
+
+
+
 interface Named {
 	readonly name: String;
 }
