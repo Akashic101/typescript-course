@@ -77,3 +77,6 @@ https://github.com/Akashic101/typescript-course/tree/19f7423cb16015d4cab11090d85
 
 ## Part 64: "readonly" properties
 https://github.com/Akashic101/typescript-course/tree/d27624819ac70c8ce45a82d9ceaa3e74d59d0877
+
+## Part 65: Inheritance
+https://github.com/Akashic101/typescript-course/tree/ffb28f083bd1636bdacf394fcacb3c127d6852c5
