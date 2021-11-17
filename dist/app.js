@@ -1,11 +1,7 @@
 "use strict";
 /*
-An interface is for typechecking an object. It gives you a structure
-of how an object should look like, what is required and what function
-it needs to have.
-
-An interface vs. a custom type is not the same. A interface is more
-clearer while a custom type can also hold union-types
+You can make a field of an interface readonly, but not private, static
+or abstract
 */
 /*
 Implementing an interface forces the class to adhere to the interface. The class
@@ -28,6 +24,12 @@ This object is of the class Person, but is of type Greetable at the same time
 since the class Person implements the interface Greetable
 */
 let user1 = new Person("David");
+/*
+You don't need to make the name-field in the class Person readonly as well since
+this is already implemented by the interface
+
+user1.name = 'Ben'; //This is not possible since the field is readonly
+*/
 user1.greet("Hello, I'm");
 console.log({ user1 });
 //# sourceMappingURL=app.js.map
