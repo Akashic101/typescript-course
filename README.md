@@ -65,3 +65,6 @@ https://github.com/Akashic101/typescript-course/tree/d81120b914ee6a6965ab5f11bfe
 # Section 5: Classes & Interfaces
 ## Part 59: Creating a first class
 https://github.com/Akashic101/typescript-course/tree/5afc6b3645b100807d64e356a8d28355468ccc84
+
+## Part 61: Constructor Functions & The "this" Keyword
+https://github.com/Akashic101/typescript-course/tree/96659ca6b9ee84ffa7f39a821e30482caf231cef
