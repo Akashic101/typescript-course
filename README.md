@@ -92,3 +92,6 @@ https://github.com/Akashic101/typescript-course/tree/ffa4b489f98daefbe7775e73f8d
 
 ## Part 69: Abstract Classes
 https://github.com/Akashic101/typescript-course/tree/e53cd0d7607414efce668bf7e00706eefac5d850
+
+## Part 70: Singletons & Private Constructors
+https://github.com/Akashic101/typescript-course/tree/0d3058c19cf11449cd6bde96e042a2e8cb51f955
