@@ -107,3 +107,6 @@ https://github.com/Akashic101/typescript-course/tree/4e8e72a2cb75e4b206ee15a833f
 
 ## Part 76: Extending Interfaces
 https://github.com/Akashic101/typescript-course/tree/f97dbe446f16ee9e836e3cd1cfaa2a202a10d229
+
+## Part 77: Interfaces as function types
+https://github.com/Akashic101/typescript-course/tree/ed0ce3d5427defa6cb76c9023b5f86a4d2f62c02
