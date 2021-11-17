@@ -80,3 +80,6 @@ https://github.com/Akashic101/typescript-course/tree/d27624819ac70c8ce45a82d9cea
 
 ## Part 65: Inheritance
 https://github.com/Akashic101/typescript-course/tree/ffb28f083bd1636bdacf394fcacb3c127d6852c5
+
+## Part 66: Overriding Properties & The "protected" Modifier
+https://github.com/Akashic101/typescript-course/tree/0ca716fe85c5ba9ab984c4fee62fe0b71afa3a25
