@@ -86,3 +86,6 @@ https://github.com/Akashic101/typescript-course/tree/0ca716fe85c5ba9ab984c4fee62
 
 ## Part 67: Getters & Setters
 https://github.com/Akashic101/typescript-course/tree/7cbd72e05d4568fa2ccf927ed9d59b203ff498cd
+
+## Part 68: Static Methods & Properties
+https://github.com/Akashic101/typescript-course/tree/ffa4b489f98daefbe7775e73f8d1d6ad92281aa4
