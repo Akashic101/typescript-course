@@ -1,10 +1,13 @@
 /*
-A class is defined by its attributes which are defined by their name and type.
-After that follows the constructor with those attributes as a parameter
+You can mark a property as private meaning only functions inside
+the class can access it
+
+This also works on functions/methods
 */
 
 class Department {
 	name: string;
+	private employees: string[] = [];
 
 	constructor(n: string) {
 		this.name = n;
@@ -20,6 +23,15 @@ class Department {
 
 	describe(this: Department) {
 		console.log("This department is called " + this.name);
+	}
+
+	addEmployee(employee: string) {
+		this.employees.push(employee);
+	}
+
+	printEmployeeInfo() {
+		console.log('The department ' + this.name + ' has ' + this.employees.length + ' employees')
+		console.log(this.employees);
 	}
 }
 
@@ -51,10 +63,31 @@ accountCopy-object has no name-value
 */
 
 /*
-Here it will work since the accountingCopy2-object has a name-value
-which is needed when calling the describe()-function
-*/
+Now this code would not work since the object does have a name-parameter, but
+no employees-array
+
 
 const accountingCopy2 = { name: "HR", describe: accounting.describe };
 
 accountingCopy2.describe(); //This department is called HR
+*/
+
+accounting.addEmployee('Ben');
+accounting.addEmployee('Robert');
+
+accounting.printEmployeeInfo();
+
+/*
+Accessing and modifiying an object like this when functions
+like addEmployee() exist should not be allowed
+
+Since the employees-value is private it cannot be accessed by a 
+function outside the Department-class
+*/
+
+//accounting.employees[2] = 'Thea';
+
+/*
+This will work since the name-value is public (by default)
+*/
+accounting.name = 'stupid department';
