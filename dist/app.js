@@ -22,6 +22,9 @@ function WithTemplate(template, hookId) {
         }
     };
 }
+/*
+When adding multiple decorators the most bottom one will run first.
+*/
 let Person = class Person {
     constructor() {
         this.name = "David";

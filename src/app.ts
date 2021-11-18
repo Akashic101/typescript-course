@@ -17,6 +17,10 @@ function WithTemplate(template: string, hookId: string) {
 	};
 }
 
+/*
+When adding multiple decorators the most bottom one will run first.
+*/
+
 @WithTemplate("<h1>My Person Object</h1>", "app")
 class Person {
 	name = "David";
