@@ -177,3 +177,6 @@ https://github.com/Akashic101/typescript-course/tree/c7e3e1588109356aac8e94269db
 
 ## Part 110: Accessor and Parameter Decorators
 https://github.com/Akashic101/typescript-course/tree/9233ca7e8b0059c5f4cd11747b5145d50c132b80
+
+## Part 114: Example: Creating an "Autobind" Decorator
+https://github.com/Akashic101/typescript-course/tree/2a32ff258af612227c20abc879e04dbe0c001ae5
