@@ -1,33 +1,26 @@
 /*
-A generic is a very broad type of data/object that can be made more
-specific so TS catches errors during compilation
+When just saying that all parameters are of type object TS
+does not know what those objects can be like and what values they hold
+
+Specifying them means TS knows that we will get different types of data
+and that the return-object is an intersection of both of them instead of
+any unspecific object
 */
 
-const names: Array<string> = ["David", "Ben"];
+function merge<T, U>(objA: T, objB: U) {
+	return Object.assign(objA, objB);
+}
 
-names[0].split(" "); //This works since TS knows exactly that the
-//Array is of type string
+const mergedObj1 = merge({ name: "David", hobbies: "Gaming" }, { age: 23 });
 
 /*
-This promise is normally of type <unknown>, but by specifiying the type
-TS can be sure that it resolves into a string
+Here the function is even more specific. We tell the function that the arguments are of an exact type instead of just an object
+While this is redundant it shows that TS already knows the types, you don't have to specify them
 */
 
-const promise: Promise<string> = new Promise((resolve, reject) => {
-	setTimeout(() => {
-		resolve("This is done");
-	}, 2000);
-});
+const mergedObj2 = merge<{ name: string; hobbies: string[] }, { age: number }>(
+	{ name: "David", hobbies: ["Gaming"] },
+	{ age: 23 }
+);
 
-/*
-This will not work since we specified the type of the data. If we would
-instead say that the promise is of type Promise<number> it would work
-
-promise.then(data => {
-	data++);
-});
-*/
-
-promise.then(data => {
-	data.toLowerCase(); //This works since TS knows the Promise is a string
-})
+console.log(mergedObj1);

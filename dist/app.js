@@ -1,8 +1,20 @@
 "use strict";
 /*
-This is a diferent way of creating a array with the type string[]
+When just saying that all parameters are of type object TS
+does not know what those objects can be like and what values they hold
+
+Specifying them means TS knows that we will get different types of data
+and that the return-object is an intersection of both of them instead of
+any unspecific object
 */
-const names = ['David', 'Ben'];
-names[0].split(' '); //This works since TS knows exactly that the
-//Array is of type string
+function merge(objA, objB) {
+    return Object.assign(objA, objB);
+}
+const mergedObj1 = merge({ name: "David", hobbies: "Gaming" }, { age: 23 });
+/*
+Here the function is even more specific. We tell the function that the arguments are of an exact type instead of just an object
+While this is redundant it shows that TS already knows the types, you don't have to specify them
+*/
+const mergedObj2 = merge({ name: "David", hobbies: ["Gaming"] }, { age: 23 });
+console.log(mergedObj1);
 //# sourceMappingURL=app.js.map
