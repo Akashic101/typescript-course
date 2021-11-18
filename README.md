@@ -183,3 +183,6 @@ https://github.com/Akashic101/typescript-course/tree/2a32ff258af612227c20abc879e
 
 Part 117: Validation with Decorators
 https://github.com/Akashic101/typescript-course/tree/f7624c4a4c556f69e095fe69d821a40f4a4afd96
+
+# Section 9: Practise Time! Let's build a Drag & Drop Project
+https://github.com/Akashic101/typescript-course/tree/741556d122e6e1be0e804a2d6b5819c2341419be
