@@ -137,3 +137,6 @@ https://github.com/Akashic101/typescript-course/tree/44f6b2b32348a4e36785189387e
 
 ## Part 90: Nullish Coalescing
 https://github.com/Akashic101/typescript-course/tree/c4a8d647f2f3c10a1480c9e344bd2d01c6a6ab35
+
+## Part 94: Built-in Generics & What are Generics?
+https://github.com/Akashic101/typescript-course/tree/00f85fc03e70f287abfb8b2bb0ecccc477ecbe39
