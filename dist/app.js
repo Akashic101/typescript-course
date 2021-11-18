@@ -1,19 +1,27 @@
 "use strict";
 /*
-Now we specified that T and U must be an object. Just passing in a number
-which would compile and run but would not be merged into the new object is
-now not possible anymore
+This interface makes sure that the argument has a length that
+can be measured, like a string or an array
 */
-function merge(objA, objB) {
-    return Object.assign(objA, objB);
-}
-const mergedObj = merge({ name: "David", hobbies: "Gaming" }, { age: 23 });
 /*
-This wouold fail silently if "extends Object" would not be specified.
-TS will compile and the code will run but 23 will not be merged into the object
-
-const mergedObj = merge({ name: "David", hobbies: "Gaming" }, 23);
-
-console.log(mergedObj);
+Now the generic type extends the interface, meaning that a boolean
+or a number, which don't have a length-property would not work
 */
+function countAndDescribe(element) {
+    let descriptionText = "Got no value";
+    if (element.length > 0) {
+        descriptionText = `Got ${element.length} element(s)`;
+    }
+    return [element, descriptionText];
+}
+/*
+This will count the length of the characters,
+in this case 8
+*/
+console.log(countAndDescribe("Hi there"));
+/*
+This will count the length of the array,
+in this case 2
+*/
+console.log(countAndDescribe(["And a one", "And a two"]));
 //# sourceMappingURL=app.js.map
