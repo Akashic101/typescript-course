@@ -1,25 +1,33 @@
-function WithTemplate(template: string, hookId: string) {
-	return function (constructor: any) {
-		const hookEl = document.getElementById(hookId);
-		const person = new constructor();
-		if (hookEl) {
-			hookEl.innerHTML = template;
-			hookEl.querySelector("h1")!.textContent = person.name;
-		}
-	};
-}
-
 /*
-When adding multiple decorators the most bottom one will run first.
+This logger gets called when the class-definition is reached by JS
+You will see this decorator-function even when never instantiating
+an object with the class
 */
 
-@WithTemplate("<h1>My Person Object</h1>", "app")
-class Person {
-	name = "David";
-
-	constructor() {
-		console.log("Creating new user...");
-	}
+function Logger(target: any, propertyName: string) {
+	console.log("PROPERTY DECORATOR");
+	console.log(target, propertyName);
 }
 
-const person = new Person();
+class Product {
+	@Logger
+	title: string;
+	private _price: number;
+
+	set price(value: number) {
+		if (value > 0) {
+			this._price = value;
+		} else {
+			throw new Error("Invalid Price - Must be greater than 0");
+		}
+	}
+
+	constructor(title: string, price: number) {
+		this.title = title;
+		this._price = price;
+	}
+
+	getPriceWithTax(tax: number) {
+		return this._price * (1 + tax);
+	}
+}
