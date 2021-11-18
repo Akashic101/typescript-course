@@ -180,3 +180,6 @@ https://github.com/Akashic101/typescript-course/tree/9233ca7e8b0059c5f4cd11747b5
 
 ## Part 114: Example: Creating an "Autobind" Decorator
 https://github.com/Akashic101/typescript-course/tree/2a32ff258af612227c20abc879e04dbe0c001ae5
+
+Part 117: Validation with Decorators
+https://github.com/Akashic101/typescript-course/tree/f7624c4a4c556f69e095fe69d821a40f4a4afd96
