@@ -158,3 +158,7 @@ https://github.com/Akashic101/typescript-course/tree/c828fbc9e61999278c52dfd42e0
 
 ## Part 101: Utility Types
 https://github.com/Akashic101/typescript-course/tree/0c83d9f603744b10391793d86a8eaa7aa517a4ad
+
+# Section 7: Decorators
+## Part 105: A First Class Decorator
+https://github.com/Akashic101/typescript-course/tree/bd6561ca65fbd6c35b0e9896f38744ab16a40f31
