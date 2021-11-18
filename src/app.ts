@@ -1,26 +1,20 @@
 /*
-When just saying that all parameters are of type object TS
-does not know what those objects can be like and what values they hold
-
-Specifying them means TS knows that we will get different types of data
-and that the return-object is an intersection of both of them instead of
-any unspecific object
+Now we specified that T and U must be an object. Just passing in a number
+which would compile and run but would not be merged into the new object is
+now not possible anymore
 */
 
-function merge<T, U>(objA: T, objB: U) {
+function merge<T extends object, U extends object>(objA: T, objB: U) {
 	return Object.assign(objA, objB);
 }
 
-const mergedObj1 = merge({ name: "David", hobbies: "Gaming" }, { age: 23 });
+const mergedObj = merge({ name: "David", hobbies: "Gaming" }, { age: 23 });
 
 /*
-Here the function is even more specific. We tell the function that the arguments are of an exact type instead of just an object
-While this is redundant it shows that TS already knows the types, you don't have to specify them
+This wouold fail silently if "extends Object" would not be specified.
+TS will compile and the code will run but 23 will not be merged into the object
+
+const mergedObj = merge({ name: "David", hobbies: "Gaming" }, 23);
+
+console.log(mergedObj);
 */
-
-const mergedObj2 = merge<{ name: string; hobbies: string[] }, { age: number }>(
-	{ name: "David", hobbies: ["Gaming"] },
-	{ age: 23 }
-);
-
-console.log(mergedObj1);
