@@ -165,3 +165,6 @@ https://github.com/Akashic101/typescript-course/tree/bd6561ca65fbd6c35b0e9896f38
 
 ## Part 106: Working with Decorator factories
 https://github.com/Akashic101/typescript-course/tree/b0d35c95b1ce87bd56069b5ce6df09b8b6c46d4d
+
+## Part 107: Building more Useful Decorators
+https://github.com/Akashic101/typescript-course/tree/b4d9bc009cc8d2ead96aafbc79481458c216f398
