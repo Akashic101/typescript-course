@@ -146,3 +146,6 @@ https://github.com/Akashic101/typescript-course/tree/493af6e75d59d91fac89ad09f67
 
 ## Part 96: Working with Constraints
 https://github.com/Akashic101/typescript-course/tree/f2c95e3af4eaa53a902f246ff75a6a0c8d9dbd37
+
+## Part 97: Another Generic Function
+https://github.com/Akashic101/typescript-course/tree/89b8b7e8d525c1e0b79688832d39e25f4c35a47b
