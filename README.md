@@ -185,4 +185,8 @@ Part 117: Validation with Decorators
 https://github.com/Akashic101/typescript-course/tree/f7624c4a4c556f69e095fe69d821a40f4a4afd96
 
 # Section 9: Practise Time! Let's build a Drag & Drop Project
+## Part 122: DOM Element Selection & OOP Rendering
 https://github.com/Akashic101/typescript-course/tree/741556d122e6e1be0e804a2d6b5819c2341419be
+
+## Part 123: Interacting with DOM Elements
+https://github.com/Akashic101/typescript-course/tree/90412a451bf78989ce2b931c3c7acaa6ffe35681
