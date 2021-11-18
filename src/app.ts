@@ -1,76 +1,51 @@
 /*
-This logger gets called when the class-definition is reached by JS
-You will see this decorator-function even when never instantiating
-an object with the class
+This Descriptor autobinds the this-value not to the target, but to
+the object
+
+Target and methodName are not needed and optional and can be marked
+with an _ so TS still compiles the code
 */
 
-function Logger(target: any, propertyName: string) {
-	console.log("PROPERTY DECORATOR");
-	console.log(target, propertyName);
-}
-
-/*
-Decoraters can also be called for getters and setters
-*/
-
-function Logger2(
-	target: any,
-	propertyName: string,
-	description: PropertyDescriptor
+function Autobind(
+	_target: any,
+	_methodName: string,
+	descriptor: PropertyDescriptor
 ) {
-	console.log("ACCESSOR DECORATOR");
-	console.log(target);
-	console.log(propertyName);
-	console.log(description);
+	const originalMethod = descriptor.value;
+	const adjustedDescriptor: PropertyDescriptor = {
+		//configurable: true, //Those two are optional and just
+		//enumerable: false,  //Show what is possible
+		get() {
+			const boundFunction = originalMethod.bind(this);
+			return boundFunction;
+		},
+	};
+	return adjustedDescriptor;
 }
+
+class Printer {
+	message = "This works";
+
+	@Autobind
+	showMessage() {
+		console.log(this.message);
+	}
+}
+
+const p = new Printer();
+
+const button = document.querySelector("button")!;
 
 /*
-Decoraters can also be called for functions
+This would return undefined without the Decorator. "this" in showMessage() is bound to the
+target, in this case the button, not the Printer-object p.
 */
 
-function Logger3(
-	target: any,
-	name: string | Symbol,
-	description: PropertyDescriptor
-) {
-	console.log("FUNCTION DECORATOR");
-	console.log(target);
-	console.log(name);
-	console.log(description);
-}
+button.addEventListener("click", p.showMessage);
 
 /*
-Decoraters can also be called for parameters
+This will work since the bind()-method changed "this" from the button
+to the Printer-object
 */
 
-function Logger4(target: any, name: string | Symbol, position: number) {
-	console.log("PARAMETER DECORATOR");
-	console.log(target);
-	console.log(name);
-	console.log(position);
-}
-
-class Product {
-	@Logger
-	title: string;
-	private _price: number;
-
-	@Logger2
-	set price(value: number) {
-		if (value > 0) {
-			this._price = value;
-		} else {
-			throw new Error("Invalid Price - Must be greater than 0");
-		}
-	}
-
-	constructor(title: string, price: number) {
-		this.title = title;
-		this._price = price;
-	}
-
-	@Logger3
-	getPriceWithTax(@Logger4 tax: number) {
-		return this._price * (1 + tax);
-	}
-}
+button.addEventListener("click", p.showMessage.bind(p));
