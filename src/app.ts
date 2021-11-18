@@ -1,24 +1,21 @@
 /*
-This is a decorator-function (only available with ES6 as a target)
-It needs an argument 
+This is a decorator-factory. With this we can call the same
+logger each time at different times with a unique message each time
 */
 
-function Logger(constructor: Function) {
-	console.log('Logging...');
-	console.log(constructor);
+function Logger(logString: string) {
+	return function (constructor: Function) {
+		console.log(logString);
+		console.log(constructor);
+	};
 }
 
-/*
-You call a decorator by putting it infront of a class for example
-with an @-symbol
-*/
-
-@Logger
+@Logger("LOGGING - CREATING PERSON")
 class Person {
-	name = 'David';
+	name = "David";
 
 	constructor() {
-		console.log('Creating new user...');
+		console.log("Creating new user...");
 	}
 }
 
