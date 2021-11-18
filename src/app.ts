@@ -1,35 +1,24 @@
 /*
-This interface makes sure that the argument has a length that
-can be measured, like a string or an array
+The "keyof"-keywords specifies that the U-argument is a key of the object T
+This way TS can be sure that the key exists inside the object
 */
 
-interface Lengthy {
-	length: number;
+function extractAndConvert<T extends object, U extends keyof T>(
+	obj: T,
+	key: U
+) {
+	return "Value: " + obj[key];
 }
 
 /*
-Now the generic type extends the interface, meaning that a boolean
-or a number, which don't have a length-property would not work
+This object has a name- and age-key. We can now extract one by calling the function
+TS knows that the key exists and the code will compile. Trying to extract
+a key that does not exist would result in an error
 */
 
-function countAndDescribe<T extends Lengthy>(element: T) {
-	let descriptionText = "Got no value";
-	if (element.length > 0) {
-		descriptionText = `Got ${element.length} element(s)`;
-	}
-	return [element, descriptionText];
-}
+const person = {
+	name: "David",
+	age: 23,
+};
 
-/*
-This will count the length of the characters,
-in this case 8
-*/
-
-console.log(countAndDescribe("Hi there"));
-
-/*
-This will count the length of the array,
-in this case 2
-*/
-
-console.log(countAndDescribe(["And a one", "And a two"]));
+console.log(extractAndConvert(person, "name"));
