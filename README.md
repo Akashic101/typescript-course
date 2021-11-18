@@ -155,3 +155,6 @@ https://github.com/Akashic101/typescript-course/tree/cb4ac0d90fb7f12184eb967cb8c
 
 ## Part 99: Generic classes
 https://github.com/Akashic101/typescript-course/tree/c828fbc9e61999278c52dfd42e0fb499bdaea914
+
+## Part 101: Utility Types
+https://github.com/Akashic101/typescript-course/tree/0c83d9f603744b10391793d86a8eaa7aa517a4ad
