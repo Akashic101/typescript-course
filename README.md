@@ -152,3 +152,6 @@ https://github.com/Akashic101/typescript-course/tree/89b8b7e8d525c1e0b79688832d3
 
 ## Part 98: They "keyof" Constraint
 https://github.com/Akashic101/typescript-course/tree/cb4ac0d90fb7f12184eb967cb8ce9b03a6ac2f22
+
+## Part 99: Generic classes
+https://github.com/Akashic101/typescript-course/tree/c828fbc9e61999278c52dfd42e0fb499bdaea914
