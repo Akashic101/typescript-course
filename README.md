@@ -168,3 +168,6 @@ https://github.com/Akashic101/typescript-course/tree/b0d35c95b1ce87bd56069b5ce6d
 
 ## Part 107: Building more Useful Decorators
 https://github.com/Akashic101/typescript-course/tree/b4d9bc009cc8d2ead96aafbc79481458c216f398
+
+## Part 108: Adding multiple Decorators
+https://github.com/Akashic101/typescript-course/tree/39619b209d90d48d9effd4192100003514425293
