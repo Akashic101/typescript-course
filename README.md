@@ -174,3 +174,6 @@ https://github.com/Akashic101/typescript-course/tree/39619b209d90d48d9effd419210
 
 ## Part 109: Diving into Property Decorators
 https://github.com/Akashic101/typescript-course/tree/c7e3e1588109356aac8e94269dbb0c6dd82a6443
+
+## Part 110: Accessor and Parameter Decorators
+https://github.com/Akashic101/typescript-course/tree/9233ca7e8b0059c5f4cd11747b5145d50c132b80
