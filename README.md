@@ -162,3 +162,6 @@ https://github.com/Akashic101/typescript-course/tree/0c83d9f603744b10391793d86a8
 # Section 7: Decorators
 ## Part 105: A First Class Decorator
 https://github.com/Akashic101/typescript-course/tree/bd6561ca65fbd6c35b0e9896f38744ab16a40f31
+
+## Part 106: Working with Decorator factories
+https://github.com/Akashic101/typescript-course/tree/b0d35c95b1ce87bd56069b5ce6df09b8b6c46d4d
