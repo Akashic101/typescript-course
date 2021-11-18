@@ -140,3 +140,6 @@ https://github.com/Akashic101/typescript-course/tree/c4a8d647f2f3c10a1480c9e344b
 
 ## Part 94: Built-in Generics & What are Generics?
 https://github.com/Akashic101/typescript-course/tree/00f85fc03e70f287abfb8b2bb0ecccc477ecbe39
+
+## Part 95: Creating a Generic function
+https://github.com/Akashic101/typescript-course/tree/493af6e75d59d91fac89ad09f670aae961d5138b
