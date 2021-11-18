@@ -1,19 +1,52 @@
 "use strict";
 /*
-The "keyof"-keywords specifies that the U-argument is a key of the object T
-This way TS can be sure that the key exists inside the object
+This makes sure that the function only works with primitive types
+Creating an object based on this class would fail since an object
+is reference-based
 */
-function extractAndConvert(obj, key) {
-    return "Value: " + obj[key];
+class DataStorage {
+    constructor() {
+        this.data = [];
+    }
+    addItem(item) {
+        this.data.push(item);
+    }
+    remoteItem(item) {
+        /*
+        This works only with primitive values
+        When working with objects this would fail
+        since when creating an object it creates a new
+        one in the memory, but we access the old one
+        */
+        this.data.splice(this.data.indexOf(item), 1);
+    }
+    getItems() {
+        return [...this.data];
+    }
 }
 /*
-This object has a name- and age-key. We can now extract one by calling the function
-TS knows that the key exists and the code will compile. Trying to extract
-a key that does not exist would result in an error
+Here the generic function works with a string
 */
-const person = {
-    name: "David",
-    age: 23,
-};
-console.log(extractAndConvert(person, "name"));
+const textStorage = new DataStorage();
+textStorage.addItem("Babies first textStorage");
+textStorage.addItem("A lying cake");
+textStorage.remoteItem("A lying cake");
+console.log(textStorage.getItems());
+/*
+Here the generic function works with a number
+*/
+const numberStorage = new DataStorage();
+numberStorage.addItem(33);
+numberStorage.addItem(44);
+numberStorage.remoteItem(44);
+console.log(numberStorage.getItems());
+/*
+Union types also work as an example
+*/
+const unionStorage = new DataStorage();
+/*
+This will not work since objects are not accepted as a datatype
+
+const objStorage = new DataStorage<object>();
+*/
 //# sourceMappingURL=app.js.map
