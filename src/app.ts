@@ -1,76 +1,33 @@
 /*
-In case of a union-type it will make the new type the one
-both have in common, or if multiple it will create a union-type
+A generic is a very broad type of data/object that can be made more
+specific so TS catches errors during compilation
 */
 
-type Combinable = string | number;
-type Numeric = number | boolean;
+const names: Array<string> = ["David", "Ben"];
 
-type Universal = Combinable & Numeric;
+names[0].split(" "); //This works since TS knows exactly that the
+//Array is of type string
 
 /*
-With this function overloading you can define the
-return-type of a function depending on the type
-of the arguments. They are written directly above the
-name of the function and always include the return-type
+This promise is normally of type <unknown>, but by specifiying the type
+TS can be sure that it resolves into a string
 */
 
-function add(a: number, b: number): number;
-function add(a: string, b: string): string;
-function add(a: Combinable, b: Combinable) {
-	if (typeof a === "string" || typeof b === "string") {
-		return a.toString() + b.toString();
-	} else {
-		return +a + +b;
-	}
-}
+const promise: Promise<string> = new Promise((resolve, reject) => {
+	setTimeout(() => {
+		resolve("This is done");
+	}, 2000);
+});
 
 /*
-TS now knows that the result is of a specific since both
-arguments are of that type. This way it will return a specific type
-instead of a Combinable
+This will not work since we specified the type of the data. If we would
+instead say that the promise is of type Promise<number> it would work
+
+promise.then(data => {
+	data++);
+});
 */
 
-const resultNumber = add(1, 5); //returns a number which makes a mathematical operation possible
-console.log(Math.pow(resultNumber, 2));
-
-const resultString = add("one", "five"); //returns a string which makes a string-operation possible
-console.log(resultString.toUpperCase());
-
-const fetchedUserData = {
-	id: "u1",
-	name: "David",
-	job: {
-		title: "CEO",
-		description: "One day maybe",
-	},
-};
-
-/*
-The ?-operator is a save way of accessing nested objects where you are
-unsure if they exist. Here TS knows for sure that the query exists, but you
-couldn't be sure about that when making a database or HTTP-request
-*/
-
-console.log(fetchedUserData?.job?.title);
-
-const userInput = "";
-
-/*
-If the first value is undefined or null
-TS will revert to the second option. The problem is that an
-empty string '' would trigger the default second option
-*/
-
-const storedData = userInput || "DEFAULT";
-
-console.log({ storedData });
-
-/*
-For that exists the ??-operator which takes care of that edge-case
-as well
-*/
-
-const correctlyStoredData = userInput ?? "DEFAULT";
-
-console.log({ correctlyStoredData });
+promise.then(data => {
+	data.toLowerCase(); //This works since TS knows the Promise is a string
+})
