@@ -149,3 +149,6 @@ https://github.com/Akashic101/typescript-course/tree/f2c95e3af4eaa53a902f246ff75
 
 ## Part 97: Another Generic Function
 https://github.com/Akashic101/typescript-course/tree/89b8b7e8d525c1e0b79688832d39e25f4c35a47b
+
+## Part 98: They "keyof" Constraint
+https://github.com/Akashic101/typescript-course/tree/cb4ac0d90fb7f12184eb967cb8ce9b03a6ac2f22
