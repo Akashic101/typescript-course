@@ -1,3 +1,15 @@
+function Autobind(_target: any, _methodName: string, propertyDescriptor: PropertyDescriptor) {
+	const originalMethod = propertyDescriptor.value;
+	const adjustedDescriptor: PropertyDescriptor = {
+		configurable: true,
+		get() {
+			const boundFunction = originalMethod.bind(this);
+			return boundFunction;
+		}
+	}
+	return adjustedDescriptor;
+}
+
 class ProjectInput {
 	templateElement: HTMLTemplateElement;
 	hostElement: HTMLDivElement;
@@ -30,13 +42,14 @@ class ProjectInput {
 		this.hostElement.insertAdjacentElement('afterbegin', this.element); //Define where to attach the element (the form) inside the template
 	}
 
+	@Autobind
 	private submitHandler(event: Event) {
 		event.preventDefault(); //prevents the default action to happen (HTTP-request)
 		console.log(this.titleInputElement.value); //prints out the value of the titleInputElement
 	}
 
 	private configure() {
-		this.element.addEventListener('submit', this.submitHandler.bind(this)); //Adds an event-listener (submit) to the class and binds it to itself, not the button
+		this.element.addEventListener('submit', this.submitHandler); //Adds an event-listener (submit) to the class and binds it to itself, not the button
 	}
 }
 
