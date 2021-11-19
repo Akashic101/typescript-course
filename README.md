@@ -211,3 +211,6 @@ https://github.com/Akashic101/typescript-course/tree/b06ba49f44951eee1adb35cc7c9
 
 ## Part 130: Filtering Projects with Enums
 https://github.com/Akashic101/typescript-course/tree/979819dea9be523a675934ad885806c39e2ac47b
+
+## Part 131: Adding Inheritance & Generics
+https://github.com/Akashic101/typescript-course/tree/7360533f10bdf4fa278d0f94d20ecf805889d50a
