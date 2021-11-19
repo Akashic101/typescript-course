@@ -214,3 +214,6 @@ https://github.com/Akashic101/typescript-course/tree/979819dea9be523a675934ad885
 
 ## Part 131: Adding Inheritance & Generics
 https://github.com/Akashic101/typescript-course/tree/7360533f10bdf4fa278d0f94d20ecf805889d50a
+
+## Part 132: Rendering Project Items with a Class
+https://github.com/Akashic101/typescript-course/tree/e3cc5cceb29f40fc5cb8dc7181784fae15633223
