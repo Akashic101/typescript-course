@@ -199,3 +199,6 @@ https://github.com/Akashic101/typescript-course/tree/219a8f29425ee62118efad5f7e1
 
 ## Part 126: Creating a Re-Usable Validation Functionality
 https://github.com/Akashic101/typescript-course/tree/6efe83d98b0b32df3a1067b9b53def7f7500cecd
+
+## Part 127: Rendering Project Lists
+https://github.com/Akashic101/typescript-course/tree/6016f477f89eaef69f0aaee78510a313ffb5ca54
