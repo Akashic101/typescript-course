@@ -50,6 +50,18 @@ class ProjectState extends State {
             listenerFunction(this.projects.slice()); //Slice makes sure we supply a copy of the array, not the original
         }
     }
+    moveProject(projectId, newStatus) {
+        const project = this.projects.find((project) => project.id === projectId); //Searches through an Array and returns the first true value it finds
+        if (project) {
+            project.status = newStatus; //Updates the status
+            this.updateListeners(); //And updates the listeners which refreshes the list
+        }
+    }
+    updateListeners() {
+        for (const listenerFunction of this.listeners) {
+            listenerFunction(this.projects.slice()); //Slice makes sure we supply a copy of the array, not the original
+        }
+    }
 }
 const projectState = ProjectState.getInstance(); //Create a global instance of ProjectState
 /*
@@ -173,7 +185,8 @@ class ProjectList extends Component {
         }
     }
     dropHandler(event) {
-        console.log(event.dataTransfer.getData("text/plain")); //Logs the ID of the data being dragged/dropped
+        const projectId = event.dataTransfer.getData("text/plain"); //Logs the ID of the data being dragged/dropped
+        projectState.moveProject(projectId, this.type === "active" ? ProjectStatus.Active : ProjectStatus.Finished);
     }
     dragLeaveHandler(_event) {
         const listElelement = this.element.querySelector("ul");
@@ -214,6 +227,9 @@ class ProjectList extends Component {
 __decorate([
     Autobind
 ], ProjectList.prototype, "dragOverHandler", null);
+__decorate([
+    Autobind
+], ProjectList.prototype, "dropHandler", null);
 __decorate([
     Autobind
 ], ProjectList.prototype, "dragLeaveHandler", null);

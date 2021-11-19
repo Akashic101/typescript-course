@@ -67,6 +67,20 @@ class ProjectState extends State<Project> {
 			listenerFunction(this.projects.slice()); //Slice makes sure we supply a copy of the array, not the original
 		}
 	}
+
+	moveProject(projectId: string, newStatus: ProjectStatus) {
+		const project = this.projects.find((project) => project.id === projectId); //Searches through an Array and returns the first true value it finds
+		if (project) {
+			project.status = newStatus; //Updates the status
+			this.updateListeners(); //And updates the listeners which refreshes the list
+		}
+	}
+
+	private updateListeners() {
+		for (const listenerFunction of this.listeners) {
+			listenerFunction(this.projects.slice()); //Slice makes sure we supply a copy of the array, not the original
+		}
+	}
 }
 
 const projectState = ProjectState.getInstance(); //Create a global instance of ProjectState
@@ -255,8 +269,14 @@ class ProjectList
 		}
 	}
 
+	@Autobind
 	dropHandler(event: DragEvent) {
-		console.log(event.dataTransfer!.getData("text/plain")); //Logs the ID of the data being dragged/dropped
+		const projectId = event.dataTransfer!.getData("text/plain"); //Logs the ID of the data being dragged/dropped
+
+		projectState.moveProject(
+			projectId,
+			this.type === "active" ? ProjectStatus.Active : ProjectStatus.Finished
+		);
 	}
 
 	@Autobind
