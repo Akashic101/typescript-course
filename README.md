@@ -202,3 +202,6 @@ https://github.com/Akashic101/typescript-course/tree/6efe83d98b0b32df3a1067b9b53
 
 ## Part 127: Rendering Project Lists
 https://github.com/Akashic101/typescript-course/tree/6016f477f89eaef69f0aaee78510a313ffb5ca54
+
+## Part 128: Managing Application State with Singletons
+https://github.com/Akashic101/typescript-course/tree/c3b433950667bf6529381d5e759e6563a815d590
