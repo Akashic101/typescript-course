@@ -226,3 +226,6 @@ https://github.com/Akashic101/typescript-course/tree/04b3f34d5b5b02e81bdb1129357
 
 Part 135: Drag Event & Reflecting the Current State in the UI
 https://github.com/Akashic101/typescript-course/tree/8e7bea29b28324affce2016ff42d25722648ce78
+
+## Part 136: Adding a Droppable Area
+https://github.com/Akashic101/typescript-course/tree/dceb3cec6d22658d5e9dff13e4e03a72d0b43006
