@@ -208,19 +208,17 @@ class ProjectItem
 	}
 
 	@Autobind
-	dragStartHandler(event: DragEvent) {
+	dragStartHandler(event: DragEvent) { //This fires whenever a drag-event gets started
 		console.log(event);
-		console.log("drag start");
 	}
 
-	dragEndHandler(event: DragEvent) {
+	dragEndHandler(event: DragEvent) { //This fires whenever a drag-event gets ended
 		console.log(event);
-		console.log("drag end");
 	}
 
 	configure() {
-		this.element.addEventListener("dragstart", this.dragStartHandler);
-		this.element.addEventListener("dragend", this.dragEndHandler);
+		this.element.addEventListener("dragstart", this.dragStartHandler); //Here we bind the ProjectItem with the dragStart-Event
+		this.element.addEventListener("dragend", this.dragEndHandler); //Here we bind the ProjectItem with the dragEnd-Event
 	}
 
 	renderContent() {
@@ -230,7 +228,10 @@ class ProjectItem
 	}
 }
 
-class ProjectList extends Component<HTMLDivElement, HTMLElement> {
+class ProjectList
+	extends Component<HTMLDivElement, HTMLElement>
+	implements DragTarget
+{
 	assignedProjects: Project[];
 
 	constructor(private type: "active" | "finished") {
@@ -241,7 +242,25 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> {
 		this.renderContent();
 	}
 
+	@Autobind
+	dragOverHandler(_event: DragEvent) {
+		const listElelement = this.element.querySelector("ul")!;
+		listElelement.classList.add("droppable");
+	}
+
+	dropHandler(_event: DragEvent) {}
+
+	@Autobind
+	dragLeaveHandler(_event: DragEvent) {
+		const listElelement = this.element.querySelector("ul")!;
+		listElelement.classList.remove("droppable");
+	}
+
 	configure() {
+		this.element.addEventListener("dragover", this.dragOverHandler);
+		this.element.addEventListener("dragleave", this.dragLeaveHandler);
+		this.element.addEventListener("drop", this.dropHandler);
+
 		projectState.addListener((projects: Project[]) => {
 			const relevantProjects = projects.filter((project) => {
 				//Goes through an array, if the element returns true it will get stored in the new array relevantProjects
@@ -347,7 +366,6 @@ class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
 			//In case the return-value is undefined
 			const [title, description, people] = userInput; //Destructering-assingment: https://stackoverflow.com/questions/3422458/unpacking-array-into-separate-variables-in-javascript
 			projectState.addProjects(title, description, people); //Create a new project with the submitted details
-			console.log({ title }, { description }, { people });
 			this.clearInput();
 		}
 	}

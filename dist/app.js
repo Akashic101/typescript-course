@@ -136,15 +136,13 @@ class ProjectItem extends Component {
     }
     dragStartHandler(event) {
         console.log(event);
-        console.log("drag start");
     }
     dragEndHandler(event) {
         console.log(event);
-        console.log("drag end");
     }
     configure() {
-        this.element.addEventListener("dragstart", this.dragStartHandler);
-        this.element.addEventListener("dragend", this.dragEndHandler);
+        this.element.addEventListener("dragstart", this.dragStartHandler); //Here we bind the ProjectItem with the dragStart-Event
+        this.element.addEventListener("dragend", this.dragEndHandler); //Here we bind the ProjectItem with the dragEnd-Event
     }
     renderContent() {
         this.element.querySelector("h2").textContent = this.project.title;
@@ -163,7 +161,19 @@ class ProjectList extends Component {
         this.configure();
         this.renderContent();
     }
+    dragOverHandler(_event) {
+        const listElelement = this.element.querySelector("ul");
+        listElelement.classList.add("droppable");
+    }
+    dropHandler(_event) { }
+    dragLeaveHandler(_event) {
+        const listElelement = this.element.querySelector("ul");
+        listElelement.classList.remove("droppable");
+    }
     configure() {
+        this.element.addEventListener("dragover", this.dragOverHandler);
+        this.element.addEventListener("dragleave", this.dragLeaveHandler);
+        this.element.addEventListener("drop", this.dropHandler);
         projectState.addListener((projects) => {
             const relevantProjects = projects.filter((project) => {
                 //Goes through an array, if the element returns true it will get stored in the new array relevantProjects
@@ -192,6 +202,12 @@ class ProjectList extends Component {
         }
     }
 }
+__decorate([
+    Autobind
+], ProjectList.prototype, "dragOverHandler", null);
+__decorate([
+    Autobind
+], ProjectList.prototype, "dragLeaveHandler", null);
 class ProjectInput extends Component {
     constructor() {
         super("project-input", "app", true, "user-input");
@@ -243,7 +259,6 @@ class ProjectInput extends Component {
             //In case the return-value is undefined
             const [title, description, people] = userInput; //Destructering-assingment: https://stackoverflow.com/questions/3422458/unpacking-array-into-separate-variables-in-javascript
             projectState.addProjects(title, description, people); //Create a new project with the submitted details
-            console.log({ title }, { description }, { people });
             this.clearInput();
         }
     }
