@@ -193,3 +193,9 @@ https://github.com/Akashic101/typescript-course/tree/90412a451bf78989ce2b931c3c7
 
 ## Part 124: Creating & Using an "Autobind" Decorator
 https://github.com/Akashic101/typescript-course/tree/a12f10a06c8a6e3880d9e872ab582d714c6032bc
+
+## Part 125: Fetching User Input
+https://github.com/Akashic101/typescript-course/tree/219a8f29425ee62118efad5f7e17dd920cc5c094
+
+## Part 126: Creating a Re-Usable Validation Functionality
+https://github.com/Akashic101/typescript-course/tree/6efe83d98b0b32df3a1067b9b53def7f7500cecd
