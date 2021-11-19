@@ -115,8 +115,22 @@ class Component {
         this.attach(insertAtStart);
     }
     attach(insertAtBeginning) {
-        this.hostElement.insertAdjacentElement(insertAtBeginning ? "afterbegin" : "afterend", //? means that if the boolean is true then the left side of the : gets called, if not then the right side
+        this.hostElement.insertAdjacentElement(insertAtBeginning ? "afterbegin" : "beforeend", //? means that if the boolean is true then the left side of the : gets called, if not then the right side
         this.element); //Define where to attach the element (the form) inside the template
+    }
+}
+class ProjectItem extends Component {
+    constructor(hostId, project) {
+        super("single-project", hostId, false, project.id);
+        this.project = project;
+        this.configure();
+        this.renderContent();
+    }
+    configure() { }
+    renderContent() {
+        this.element.querySelector("h2").textContent = this.project.title;
+        this.element.querySelector("h3").textContent = `Amount of people: ${this.project.amountOfPeople.toString()}`;
+        this.element.querySelector("p").textContent = this.project.description;
     }
 }
 class ProjectList extends Component {
@@ -142,20 +156,18 @@ class ProjectList extends Component {
             this.renderProjects();
         });
     }
-    renderProjects() {
-        const listElelement = document.getElementById(`${this.type}-projects-list`);
-        listElelement.textContent = ""; //This clears the list meaning that we do not duplicate every entry if we add more than one project
-        for (const projectItem of this.assignedProjects) {
-            const listItem = document.createElement("li");
-            listItem.textContent = projectItem.title;
-            listElelement.appendChild(listItem);
-        }
-    }
     renderContent() {
         const listId = `${this.type}-projects-list`; //Creates a name with the type of the ProjectList inside a template string
         this.element.querySelector("ul").id = listId; //Selects the unordered list and gives it the id
         this.element.querySelector("h2").textContent =
             this.type.toUpperCase() + ` PROJECTS`; //Changes the title of the unordered list
+    }
+    renderProjects() {
+        const listElelement = document.getElementById(`${this.type}-projects-list`);
+        listElelement.textContent = ""; //This clears the list meaning that we do not duplicate every entry if we add more than one project
+        for (const projectItem of this.assignedProjects) {
+            new ProjectItem(this.element.querySelector("ul").id, projectItem);
+        }
     }
 }
 class ProjectInput extends Component {
