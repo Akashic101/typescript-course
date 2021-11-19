@@ -190,3 +190,6 @@ https://github.com/Akashic101/typescript-course/tree/741556d122e6e1be0e804a2d6b5
 
 ## Part 123: Interacting with DOM Elements
 https://github.com/Akashic101/typescript-course/tree/90412a451bf78989ce2b931c3c7acaa6ffe35681
+
+## Part 124: Creating & Using an "Autobind" Decorator
+https://github.com/Akashic101/typescript-course/tree/a12f10a06c8a6e3880d9e872ab582d714c6032bc
