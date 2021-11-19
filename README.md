@@ -220,3 +220,6 @@ https://github.com/Akashic101/typescript-course/tree/e3cc5cceb29f40fc5cb8dc71817
 
 ## Part 133: Using a Getter
 https://github.com/Akashic101/typescript-course/tree/a4e70ac22b2004dc5170d95bfdd6466125cfbae2
+
+## Part 134: Utilizing Interfaces to Implement Drag & Drop
+https://github.com/Akashic101/typescript-course/tree/04b3f34d5b5b02e81bdb1129357013ba08668b50
