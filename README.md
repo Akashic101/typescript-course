@@ -223,3 +223,6 @@ https://github.com/Akashic101/typescript-course/tree/a4e70ac22b2004dc5170d95bfdd
 
 ## Part 134: Utilizing Interfaces to Implement Drag & Drop
 https://github.com/Akashic101/typescript-course/tree/04b3f34d5b5b02e81bdb1129357013ba08668b50
+
+Part 135: Drag Event & Reflecting the Current State in the UI
+https://github.com/Akashic101/typescript-course/tree/8e7bea29b28324affce2016ff42d25722648ce78
