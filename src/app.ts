@@ -42,14 +42,40 @@ class ProjectInput {
 		this.hostElement.insertAdjacentElement('afterbegin', this.element); //Define where to attach the element (the form) inside the template
 	}
 
-	@Autobind
+	private gatherUserInput(): [string, string, number] | void { //This function either returns a tuple (if-block) or nothing (else-block)
+		const enteredTitle = this.titleInputElement.value;
+		const enteredDescription = this.descriptionInputElement.value;
+		const enteredPeople = this.peopleInputElement.value;
+
+		if(enteredTitle.trim().length === 0 || enteredDescription.trim().length === 0 || enteredPeople.trim().length === 0) { //Checks if any element is empty
+			alert('Invalid input, please try again');
+			return;
+		}
+		else {
+			return[enteredTitle, enteredDescription, +enteredPeople];
+		}
+	}
+
+	@Autobind //Thanks to the Autobind-decorator we don't need to call .bind(this) to configure() anymore
 	private submitHandler(event: Event) {
 		event.preventDefault(); //prevents the default action to happen (HTTP-request)
+		const userInput = this.gatherUserInput();
+		if(Array.isArray(userInput)) { //In case the return-value is undefined
+			const [title, description, people] = userInput; //Destructering-assingment: https://stackoverflow.com/questions/3422458/unpacking-array-into-separate-variables-in-javascript
+			console.log({title}, {description}, {people});
+			this.clearInput();
+		}
 		console.log(this.titleInputElement.value); //prints out the value of the titleInputElement
 	}
 
+	private clearInput() { //Clears all the input-values
+		this.titleInputElement.value = "";
+		this.descriptionInputElement.value = "";
+		this.peopleInputElement.value = ""
+	}
+
 	private configure() {
-		this.element.addEventListener('submit', this.submitHandler); //Adds an event-listener (submit) to the class and binds it to itself, not the button
+		this.element.addEventListener('submit', this.submitHandler); //Adds an event-listener (submit) to the class
 	}
 }
 
