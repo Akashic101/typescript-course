@@ -217,3 +217,6 @@ https://github.com/Akashic101/typescript-course/tree/7360533f10bdf4fa278d0f94d20
 
 ## Part 132: Rendering Project Items with a Class
 https://github.com/Akashic101/typescript-course/tree/e3cc5cceb29f40fc5cb8dc7181784fae15633223
+
+## Part 133: Using a Getter
+https://github.com/Akashic101/typescript-course/tree/a4e70ac22b2004dc5170d95bfdd6466125cfbae2
