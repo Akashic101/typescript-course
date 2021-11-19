@@ -126,10 +126,18 @@ class ProjectItem extends Component {
         this.configure();
         this.renderContent();
     }
+    get persons() {
+        if (this.project.amountOfPeople == 1) {
+            return "1 person";
+        }
+        else {
+            return `${this.project.amountOfPeople} persons`;
+        }
+    }
     configure() { }
     renderContent() {
         this.element.querySelector("h2").textContent = this.project.title;
-        this.element.querySelector("h3").textContent = `Amount of people: ${this.project.amountOfPeople.toString()}`;
+        this.element.querySelector("h3").textContent = `${this.persons} assigned`;
         this.element.querySelector("p").textContent = this.project.description;
     }
 }
