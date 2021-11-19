@@ -1,3 +1,42 @@
+class ProjectState {
+	private listeners: any = []; //An Array of functions a class-instance can have
+	private projects: any[] = []; //An Array of projects
+	private static instance: ProjectState;
+
+	private constructor() {}
+
+	static getInstance() {
+		//Make sure that there can only be a single instance of a ProjectState (Singleton)
+		if (this.instance) {
+			return this.instance;
+		} else {
+			this.instance = new ProjectState();
+			return this.instance;
+		}
+	}
+
+	addListener(listenerFunction: Function) {
+		//Adds a function to a listener
+		this.listeners.push(listenerFunction);
+	}
+
+	addProjects(title: string, description: string, amountOfPeople: number) {
+		const newProject = {
+			id: Math.random().toString(),
+			title: title,
+			description: description,
+			amountOfPeople: amountOfPeople,
+		};
+		this.projects.push(newProject);
+
+		for (const listenerFunction of this.listeners) {
+			listenerFunction(this.projects.slice()); //Slice makes sure we supply a copy of the array, not the original
+		}
+	}
+}
+
+const projectState = ProjectState.getInstance(); //Create a global instance of ProjectState
+
 interface Validatable {
 	value: string | number;
 	requiredProperty?: boolean; //Marking certain values with a ? means that they are optional
@@ -65,14 +104,12 @@ function Autobind(
 	return adjustedDescriptor;
 }
 
-/*
-Most of this code is copied from the ProjectInput-class
-*/
-
 class ProjectList {
+	//Most of this code is copied from the ProjectInput-class
 	templateElement: HTMLTemplateElement;
 	hostElement: HTMLDivElement;
 	element: HTMLElement; //This is now not a form but a normal HTMLElement
+	assignedProjects: any[];
 
 	constructor(private type: "active" | "finished") {
 		//Every constructed element must be one of those two literal types
@@ -80,6 +117,7 @@ class ProjectList {
 			"project-list"
 		)! as HTMLTemplateElement; //The template-element inside the HTML-file
 		this.hostElement = document.getElementById("app")! as HTMLDivElement; //The host-div which will display all informations from the template
+		this.assignedProjects = [];
 
 		const importedNode = document.importNode(this.templateElement.content, true); //Imports the content of the template with all nested elements
 		this.element = importedNode.firstElementChild as HTMLElement; //Saves the next tag (first child) of the template
@@ -88,15 +126,32 @@ class ProjectList {
 		// it a id will make sure it gets affected by the css-file
 
 		this.element.id = `${this.type}-projects`; //Either "active" or "finished"
+
+		projectState.addListener((projects: any[]) => {
+			this.assignedProjects = projects;
+			this.renderProjects();
+		});
+
 		this.attach();
 		this.renderContent();
+	}
+
+	private renderProjects() {
+		const listElelement = document.getElementById(
+			`${this.type}-projects-list`
+		) as HTMLUListElement;
+		for (const projectItem of this.assignedProjects) {
+			const listItem = document.createElement("li");
+			listItem.textContent = projectItem.title;
+			listElelement.appendChild(listItem);
+		}
 	}
 
 	private renderContent() {
 		const listId = `${this.type}-projects-list`; //Creates a name with the type of the ProjectList inside a template string
 		this.element.querySelector("ul")!.id = listId; //Selects the unordered list and gives it the id
 		this.element.querySelector("h2")!.textContent =
-			this.type.toUpperCase() + ` PROJECTS`; //Changes the title of the unordered list 
+			this.type.toUpperCase() + ` PROJECTS`; //Changes the title of the unordered list
 	}
 
 	private attach() {
@@ -189,6 +244,7 @@ class ProjectInput {
 		if (Array.isArray(userInput)) {
 			//In case the return-value is undefined
 			const [title, description, people] = userInput; //Destructering-assingment: https://stackoverflow.com/questions/3422458/unpacking-array-into-separate-variables-in-javascript
+			projectState.addProjects(title, description, people); //Create a new project with the submitted details
 			console.log({ title }, { description }, { people });
 			this.clearInput();
 		}

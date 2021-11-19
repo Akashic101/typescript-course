@@ -5,6 +5,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+class ProjectState {
+    constructor() {
+        this.listeners = []; //An Array of functions a class-instance can have
+        this.projects = []; //An Array of projects
+    }
+    static getInstance() {
+        //Make sure that there can only be a single instance of a ProjectState (Singleton)
+        if (this.instance) {
+            return this.instance;
+        }
+        else {
+            this.instance = new ProjectState();
+            return this.instance;
+        }
+    }
+    addListener(listenerFunction) {
+        //Adds a function to a listener
+        this.listeners.push(listenerFunction);
+    }
+    addProjects(title, description, amountOfPeople) {
+        const newProject = {
+            id: Math.random().toString(),
+            title: title,
+            description: description,
+            amountOfPeople: amountOfPeople,
+        };
+        this.projects.push(newProject);
+        for (const listenerFunction of this.listeners) {
+            listenerFunction(this.projects.slice()); //Slice makes sure we supply a copy of the array, not the original
+        }
+    }
+}
+const projectState = ProjectState.getInstance(); //Create a global instance of ProjectState
 /*
 With this function we can check if an object of the type Validatable has correct values
 It can check if an object even needs to be validated in the first place, if the string is over a minimum length
@@ -48,28 +81,38 @@ function Autobind(_target, _methodName, propertyDescriptor) {
     };
     return adjustedDescriptor;
 }
-/*
-Most of this code is copied from the ProjectInput-class
-*/
 class ProjectList {
     constructor(type) {
         this.type = type;
         //Every constructed element must be one of those two literal types
         this.templateElement = document.getElementById("project-list"); //The template-element inside the HTML-file
         this.hostElement = document.getElementById("app"); //The host-div which will display all informations from the template
+        this.assignedProjects = [];
         const importedNode = document.importNode(this.templateElement.content, true); //Imports the content of the template with all nested elements
         this.element = importedNode.firstElementChild; //Saves the next tag (first child) of the template
         // Since this element gets created during runtime it does not have an id. Giving
         // it a id will make sure it gets affected by the css-file
         this.element.id = `${this.type}-projects`; //Either "active" or "finished"
+        projectState.addListener((projects) => {
+            this.assignedProjects = projects;
+            this.renderProjects();
+        });
         this.attach();
         this.renderContent();
+    }
+    renderProjects() {
+        const listElelement = document.getElementById(`${this.type}-projects-list`);
+        for (const projectItem of this.assignedProjects) {
+            const listItem = document.createElement("li");
+            listItem.textContent = projectItem.title;
+            listElelement.appendChild(listItem);
+        }
     }
     renderContent() {
         const listId = `${this.type}-projects-list`; //Creates a name with the type of the ProjectList inside a template string
         this.element.querySelector("ul").id = listId; //Selects the unordered list and gives it the id
         this.element.querySelector("h2").textContent =
-            this.type.toUpperCase() + ` PROJECTS`; //Changes the title of the unordered list 
+            this.type.toUpperCase() + ` PROJECTS`; //Changes the title of the unordered list
     }
     attach() {
         this.hostElement.insertAdjacentElement("afterbegin", this.element); //Define where to attach the element (the form) inside the template
@@ -131,6 +174,7 @@ class ProjectInput {
         if (Array.isArray(userInput)) {
             //In case the return-value is undefined
             const [title, description, people] = userInput; //Destructering-assingment: https://stackoverflow.com/questions/3422458/unpacking-array-into-separate-variables-in-javascript
+            projectState.addProjects(title, description, people); //Create a new project with the submitted details
             console.log({ title }, { description }, { people });
             this.clearInput();
         }
