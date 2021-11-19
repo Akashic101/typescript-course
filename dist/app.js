@@ -103,7 +103,16 @@ class ProjectList {
         // it a id will make sure it gets affected by the css-file
         this.element.id = `${this.type}-projects`; //Either "active" or "finished"
         projectState.addListener((projects) => {
-            this.assignedProjects = projects;
+            const relevantProjects = projects.filter((project) => {
+                //Goes through an array, if the element returns true it will get stored in the new array relevantProjects
+                if (this.type === "active") {
+                    return project.status === ProjectStatus.Active;
+                }
+                else {
+                    return project.status === ProjectStatus.Finished;
+                }
+            });
+            this.assignedProjects = relevantProjects;
             this.renderProjects();
         });
         this.attach();
@@ -111,6 +120,7 @@ class ProjectList {
     }
     renderProjects() {
         const listElelement = document.getElementById(`${this.type}-projects-list`);
+        listElelement.textContent = ""; //This clears the list meaning that we do not duplicate every entry if we add more than one project
         for (const projectItem of this.assignedProjects) {
             const listItem = document.createElement("li");
             listItem.textContent = projectItem.title;

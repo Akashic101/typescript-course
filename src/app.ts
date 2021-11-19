@@ -1,4 +1,4 @@
-enum ProjectStatus {
+enum ProjectStatus { //An Enum which describes the status a project can have
 	Active,
 	Finished,
 }
@@ -19,8 +19,6 @@ class ProjectState {
 	private listeners: Listener[] = []; //An Array of functions a class-instance can have
 	private projects: Project[] = []; //An Array of projects
 	private static instance: ProjectState;
-
-	private constructor() {}
 
 	static getInstance() {
 		//Make sure that there can only be a single instance of a ProjectState (Singleton)
@@ -146,7 +144,15 @@ class ProjectList {
 		this.element.id = `${this.type}-projects`; //Either "active" or "finished"
 
 		projectState.addListener((projects: Project[]) => {
-			this.assignedProjects = projects;
+			const relevantProjects = projects.filter((project) => {
+				//Goes through an array, if the element returns true it will get stored in the new array relevantProjects
+				if (this.type === "active") {
+					return project.status === ProjectStatus.Active;
+				} else {
+					return project.status === ProjectStatus.Finished;
+				}
+			});
+			this.assignedProjects = relevantProjects;
 			this.renderProjects();
 		});
 
@@ -158,6 +164,7 @@ class ProjectList {
 		const listElelement = document.getElementById(
 			`${this.type}-projects-list`
 		) as HTMLUListElement;
+		listElelement.textContent = ""; //This clears the list meaning that we do not duplicate every entry if we add more than one project
 		for (const projectItem of this.assignedProjects) {
 			const listItem = document.createElement("li");
 			listItem.textContent = projectItem.title;
