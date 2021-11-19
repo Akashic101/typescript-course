@@ -1,6 +1,23 @@
+enum ProjectStatus {
+	Active,
+	Finished,
+}
+
+class Project {
+	constructor(
+		public id: string,
+		public title: string,
+		public description: string,
+		public amountOfPeople: number,
+		public status: ProjectStatus
+	) {}
+}
+
+type Listener = (items: Project[]) => void;
+
 class ProjectState {
-	private listeners: any = []; //An Array of functions a class-instance can have
-	private projects: any[] = []; //An Array of projects
+	private listeners: Listener[] = []; //An Array of functions a class-instance can have
+	private projects: Project[] = []; //An Array of projects
 	private static instance: ProjectState;
 
 	private constructor() {}
@@ -15,18 +32,19 @@ class ProjectState {
 		}
 	}
 
-	addListener(listenerFunction: Function) {
+	addListener(listenerFunction: Listener) {
 		//Adds a function to a listener
 		this.listeners.push(listenerFunction);
 	}
 
 	addProjects(title: string, description: string, amountOfPeople: number) {
-		const newProject = {
-			id: Math.random().toString(),
-			title: title,
-			description: description,
-			amountOfPeople: amountOfPeople,
-		};
+		const newProject = new Project(
+			Math.random().toString(),
+			title,
+			description,
+			amountOfPeople,
+			ProjectStatus.Active
+		);
 		this.projects.push(newProject);
 
 		for (const listenerFunction of this.listeners) {
@@ -109,7 +127,7 @@ class ProjectList {
 	templateElement: HTMLTemplateElement;
 	hostElement: HTMLDivElement;
 	element: HTMLElement; //This is now not a form but a normal HTMLElement
-	assignedProjects: any[];
+	assignedProjects: Project[];
 
 	constructor(private type: "active" | "finished") {
 		//Every constructed element must be one of those two literal types
@@ -127,7 +145,7 @@ class ProjectList {
 
 		this.element.id = `${this.type}-projects`; //Either "active" or "finished"
 
-		projectState.addListener((projects: any[]) => {
+		projectState.addListener((projects: Project[]) => {
 			this.assignedProjects = projects;
 			this.renderProjects();
 		});
