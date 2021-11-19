@@ -1,8 +1,8 @@
 interface Validatable {
 	value: string | number;
 	requiredProperty?: boolean; //Marking certain values with a ? means that they are optional
-	minLength?: number;			//and an object which inherits from this interface
-	maxLength?: number;			//is not required to have them
+	minLength?: number; //and an object which inherits from this interface
+	maxLength?: number; //is not required to have them
 	min?: number;
 	max?: number;
 }
@@ -13,21 +13,37 @@ It can check if an object even needs to be validated in the first place, if the 
 or under a maxiumum length or if a number is over and/or under a certain value
 */
 
-function validate(validatableInput: Validatable): boolean { //The return-type doesn't really need to be written here, but I do it so I do not forget about it
+function validate(validatableInput: Validatable): boolean {
+	//The return-type doesn't really need to be written here, but I do it so I do not forget about it
 	let isValid = true;
 	if (validatableInput.requiredProperty) {
 		isValid = isValid && validatableInput.value.toString().trim().length !== 0; //Both properties must be true or false. If one fails, both will
 	}
-	if (validatableInput.minLength != null && typeof validatableInput.value === "string") { //!= includes null and undefined, !== does not
+	if (
+		validatableInput.minLength != null &&
+		typeof validatableInput.value === "string"
+	) {
+		//!= includes null and undefined, !== does not
 		isValid = isValid && validatableInput.value.length > validatableInput.minLength;
 	}
-	if (validatableInput.maxLength != null && typeof validatableInput.value === "string") { //Checking for null makes sure the value is not 0
+	if (
+		validatableInput.maxLength != null &&
+		typeof validatableInput.value === "string"
+	) {
+		//Checking for null makes sure the value is not 0
 		isValid = isValid && validatableInput.value.length < validatableInput.maxLength;
 	}
-	if (validatableInput.min != null && typeof validatableInput.value === "number") { //Now we need to check for a number, not a string
+	if (
+		validatableInput.min != null &&
+		typeof validatableInput.value === "number"
+	) {
+		//Now we need to check for a number, not a string
 		isValid = isValid && validatableInput.value > validatableInput.min;
 	}
-	if (validatableInput.max != null && typeof validatableInput.value === "number") {
+	if (
+		validatableInput.max != null &&
+		typeof validatableInput.value === "number"
+	) {
 		isValid = isValid && validatableInput.value < validatableInput.max;
 	}
 	return isValid;
@@ -47,6 +63,45 @@ function Autobind(
 		},
 	};
 	return adjustedDescriptor;
+}
+
+/*
+Most of this code is copied from the ProjectInput-class
+*/
+
+class ProjectList {
+	templateElement: HTMLTemplateElement;
+	hostElement: HTMLDivElement;
+	element: HTMLElement; //This is now not a form but a normal HTMLElement
+
+	constructor(private type: "active" | "finished") {
+		//Every constructed element must be one of those two literal types
+		this.templateElement = document.getElementById(
+			"project-list"
+		)! as HTMLTemplateElement; //The template-element inside the HTML-file
+		this.hostElement = document.getElementById("app")! as HTMLDivElement; //The host-div which will display all informations from the template
+
+		const importedNode = document.importNode(this.templateElement.content, true); //Imports the content of the template with all nested elements
+		this.element = importedNode.firstElementChild as HTMLElement; //Saves the next tag (first child) of the template
+
+		// Since this element gets created during runtime it does not have an id. Giving
+		// it a id will make sure it gets affected by the css-file
+
+		this.element.id = `${this.type}-projects`; //Either "active" or "finished"
+		this.attach();
+		this.renderContent();
+	}
+
+	private renderContent() {
+		const listId = `${this.type}-projects-list`; //Creates a name with the type of the ProjectList inside a template string
+		this.element.querySelector("ul")!.id = listId; //Selects the unordered list and gives it the id
+		this.element.querySelector("h2")!.textContent =
+			this.type.toUpperCase() + ` PROJECTS`; //Changes the title of the unordered list 
+	}
+
+	private attach() {
+		this.hostElement.insertAdjacentElement("afterbegin", this.element); //Define where to attach the element (the form) inside the template
+	}
 }
 
 class ProjectInput {
@@ -98,21 +153,21 @@ class ProjectInput {
 		const titleValidatable: Validatable = {
 			value: enteredTitle,
 			requiredProperty: true,
-			minLength: 6
-		}
+			minLength: 6,
+		};
 
 		const descriptionValidatable: Validatable = {
 			value: enteredDescription,
 			requiredProperty: true,
-			minLength: 6
-		}
+			minLength: 6,
+		};
 
 		const peopleValidatable: Validatable = {
 			value: +enteredPeople,
 			requiredProperty: true,
 			min: 0,
-			max: 10
-		}
+			max: 10,
+		};
 
 		if (
 			!validate(titleValidatable) ||
@@ -152,3 +207,5 @@ class ProjectInput {
 }
 
 const projectInput = new ProjectInput();
+const activeProjectList = new ProjectList("active"); //Creating a new list with the literal type "active"
+const finishedProjectList = new ProjectList("finished"); //Creating a new list with the literal type "finished"
