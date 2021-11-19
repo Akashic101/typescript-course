@@ -208,3 +208,6 @@ https://github.com/Akashic101/typescript-course/tree/c3b433950667bf6529381d5e759
 
 ## Part 129: More Classes& Custom Types
 https://github.com/Akashic101/typescript-course/tree/b06ba49f44951eee1adb35cc7c95a33e4f5f8cf9
+
+## Part 130: Filtering Projects with Enums
+https://github.com/Akashic101/typescript-course/tree/979819dea9be523a675934ad885806c39e2ac47b
