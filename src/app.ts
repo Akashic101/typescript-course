@@ -13,12 +13,24 @@ class Project {
 	) {}
 }
 
-type Listener = (items: Project[]) => void;
+type Listener<T> = (items: T[]) => void;
 
-class ProjectState {
-	private listeners: Listener[] = []; //An Array of functions a class-instance can have
+class State<T> {
+	protected listeners: Listener<T>[] = []; //An Array of functions a class-instance can have
+
+	addListener(listenerFunction: Listener<T>) {
+		//Adds a function to a listener
+		this.listeners.push(listenerFunction);
+	}
+}
+
+class ProjectState extends State<Project> {
 	private projects: Project[] = []; //An Array of projects
 	private static instance: ProjectState;
+
+	private constructor() {
+		super();
+	}
 
 	static getInstance() {
 		//Make sure that there can only be a single instance of a ProjectState (Singleton)
@@ -28,11 +40,6 @@ class ProjectState {
 			this.instance = new ProjectState();
 			return this.instance;
 		}
-	}
-
-	addListener(listenerFunction: Listener) {
-		//Adds a function to a listener
-		this.listeners.push(listenerFunction);
 	}
 
 	addProjects(title: string, description: string, amountOfPeople: number) {
@@ -120,29 +127,65 @@ function Autobind(
 	return adjustedDescriptor;
 }
 
-class ProjectList {
-	//Most of this code is copied from the ProjectInput-class
-	templateElement: HTMLTemplateElement;
-	hostElement: HTMLDivElement;
-	element: HTMLElement; //This is now not a form but a normal HTMLElement
-	assignedProjects: Project[];
+/*
+Abstract classes cannot be instantiated. It is just a class that others
+can inherit from and are forced to have their own version of abstract
+methods
+*/
 
-	constructor(private type: "active" | "finished") {
-		//Every constructed element must be one of those two literal types
+abstract class Component<T extends HTMLElement, U extends HTMLElement> {
+	//This class is now generic
+	templateElement: HTMLTemplateElement;
+	hostElement: T;
+	element: U;
+
+	constructor(
+		templateId: string,
+		hostElementId: string,
+		insertAtStart: boolean,
+		newElementId?: string
+	) {
+		//optional parameters should be last
 		this.templateElement = document.getElementById(
-			"project-list"
+			templateId
 		)! as HTMLTemplateElement; //The template-element inside the HTML-file
-		this.hostElement = document.getElementById("app")! as HTMLDivElement; //The host-div which will display all informations from the template
-		this.assignedProjects = [];
+		this.hostElement = document.getElementById(hostElementId)! as T; //The host-div which will display all informations from the template
 
 		const importedNode = document.importNode(this.templateElement.content, true); //Imports the content of the template with all nested elements
-		this.element = importedNode.firstElementChild as HTMLElement; //Saves the next tag (first child) of the template
+		this.element = importedNode.firstElementChild as U; //Saves the next tag (first child) of the template
 
 		// Since this element gets created during runtime it does not have an id. Giving
 		// it a id will make sure it gets affected by the css-file
 
-		this.element.id = `${this.type}-projects`; //Either "active" or "finished"
+		if (newElementId) {
+			this.element.id = newElementId;
+		}
 
+		this.attach(insertAtStart);
+	}
+	private attach(insertAtBeginning: boolean) {
+		this.hostElement.insertAdjacentElement(
+			insertAtBeginning ? "afterbegin" : "afterend", //? means that if the boolean is true then the left side of the : gets called, if not then the right side
+			this.element
+		); //Define where to attach the element (the form) inside the template
+	}
+
+	abstract configure(): void; //This means that those functions are forced to be created
+	abstract renderContent(): void;
+}
+
+class ProjectList extends Component<HTMLDivElement, HTMLElement> {
+	assignedProjects: Project[];
+
+	constructor(private type: "active" | "finished") {
+		super("project-list", "app", false, `${type}-projects`);
+		this.assignedProjects = [];
+
+		this.configure();
+		this.renderContent();
+	}
+
+	configure() {
 		projectState.addListener((projects: Project[]) => {
 			const relevantProjects = projects.filter((project) => {
 				//Goes through an array, if the element returns true it will get stored in the new array relevantProjects
@@ -155,12 +198,9 @@ class ProjectList {
 			this.assignedProjects = relevantProjects;
 			this.renderProjects();
 		});
-
-		this.attach();
-		this.renderContent();
 	}
 
-	private renderProjects() {
+	renderProjects() {
 		const listElelement = document.getElementById(
 			`${this.type}-projects-list`
 		) as HTMLUListElement;
@@ -172,39 +212,21 @@ class ProjectList {
 		}
 	}
 
-	private renderContent() {
+	renderContent() {
 		const listId = `${this.type}-projects-list`; //Creates a name with the type of the ProjectList inside a template string
 		this.element.querySelector("ul")!.id = listId; //Selects the unordered list and gives it the id
 		this.element.querySelector("h2")!.textContent =
 			this.type.toUpperCase() + ` PROJECTS`; //Changes the title of the unordered list
 	}
-
-	private attach() {
-		this.hostElement.insertAdjacentElement("afterbegin", this.element); //Define where to attach the element (the form) inside the template
-	}
 }
 
-class ProjectInput {
-	templateElement: HTMLTemplateElement;
-	hostElement: HTMLDivElement;
-	element: HTMLFormElement;
+class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
 	titleInputElement: HTMLInputElement;
 	descriptionInputElement: HTMLInputElement;
 	peopleInputElement: HTMLInputElement;
 
 	constructor() {
-		this.templateElement = document.getElementById(
-			"project-input"
-		)! as HTMLTemplateElement; //The template-element inside the HTML-file
-		this.hostElement = document.getElementById("app")! as HTMLDivElement; //The host-div which will display all informations from the template
-
-		const importedNode = document.importNode(this.templateElement.content, true); //Imports the content of the template with all nested elements
-		this.element = importedNode.firstElementChild as HTMLFormElement; //Saves the next tag (first child) of the template
-
-		// Since this element gets created during runtime it does not have an id. Giving
-		// it a id will make sure it gets affected by the css-file
-
-		this.element.id = "user-input";
+		super("project-input", "app", true, "user-input");
 
 		this.titleInputElement = this.element.querySelector(
 			"#title"
@@ -217,12 +239,13 @@ class ProjectInput {
 		)! as HTMLInputElement; //Selects the input-field with the id "people"
 
 		this.configure();
-		this.attach(); //this function must be called last
 	}
 
-	private attach() {
-		this.hostElement.insertAdjacentElement("afterbegin", this.element); //Define where to attach the element (the form) inside the template
+	configure() {
+		this.element.addEventListener("submit", this.submitHandler); //Adds an event-listener (submit) to the class
 	}
+
+	renderContent() {}
 
 	private gatherUserInput(): [string, string, number] | void {
 		//This function either returns a tuple (if-block) or nothing (else-block)
@@ -280,10 +303,6 @@ class ProjectInput {
 		this.titleInputElement.value = "";
 		this.descriptionInputElement.value = "";
 		this.peopleInputElement.value = "";
-	}
-
-	private configure() {
-		this.element.addEventListener("submit", this.submitHandler); //Adds an event-listener (submit) to the class
 	}
 }
 

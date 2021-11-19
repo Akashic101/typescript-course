@@ -19,9 +19,18 @@ class Project {
         this.status = status;
     }
 }
-class ProjectState {
+class State {
     constructor() {
         this.listeners = []; //An Array of functions a class-instance can have
+    }
+    addListener(listenerFunction) {
+        //Adds a function to a listener
+        this.listeners.push(listenerFunction);
+    }
+}
+class ProjectState extends State {
+    constructor() {
+        super();
         this.projects = []; //An Array of projects
     }
     static getInstance() {
@@ -33,10 +42,6 @@ class ProjectState {
             this.instance = new ProjectState();
             return this.instance;
         }
-    }
-    addListener(listenerFunction) {
-        //Adds a function to a listener
-        this.listeners.push(listenerFunction);
     }
     addProjects(title, description, amountOfPeople) {
         const newProject = new Project(Math.random().toString(), title, description, amountOfPeople, ProjectStatus.Active);
@@ -90,18 +95,39 @@ function Autobind(_target, _methodName, propertyDescriptor) {
     };
     return adjustedDescriptor;
 }
-class ProjectList {
-    constructor(type) {
-        this.type = type;
-        //Every constructed element must be one of those two literal types
-        this.templateElement = document.getElementById("project-list"); //The template-element inside the HTML-file
-        this.hostElement = document.getElementById("app"); //The host-div which will display all informations from the template
-        this.assignedProjects = [];
+/*
+Abstract classes cannot be instantiated. It is just a class that others
+can inherit from and are forced to have their own version of abstract
+methods
+*/
+class Component {
+    constructor(templateId, hostElementId, insertAtStart, newElementId) {
+        //optional parameters should be last
+        this.templateElement = document.getElementById(templateId); //The template-element inside the HTML-file
+        this.hostElement = document.getElementById(hostElementId); //The host-div which will display all informations from the template
         const importedNode = document.importNode(this.templateElement.content, true); //Imports the content of the template with all nested elements
         this.element = importedNode.firstElementChild; //Saves the next tag (first child) of the template
         // Since this element gets created during runtime it does not have an id. Giving
         // it a id will make sure it gets affected by the css-file
-        this.element.id = `${this.type}-projects`; //Either "active" or "finished"
+        if (newElementId) {
+            this.element.id = newElementId;
+        }
+        this.attach(insertAtStart);
+    }
+    attach(insertAtBeginning) {
+        this.hostElement.insertAdjacentElement(insertAtBeginning ? "afterbegin" : "afterend", //? means that if the boolean is true then the left side of the : gets called, if not then the right side
+        this.element); //Define where to attach the element (the form) inside the template
+    }
+}
+class ProjectList extends Component {
+    constructor(type) {
+        super("project-list", "app", false, `${type}-projects`);
+        this.type = type;
+        this.assignedProjects = [];
+        this.configure();
+        this.renderContent();
+    }
+    configure() {
         projectState.addListener((projects) => {
             const relevantProjects = projects.filter((project) => {
                 //Goes through an array, if the element returns true it will get stored in the new array relevantProjects
@@ -115,8 +141,6 @@ class ProjectList {
             this.assignedProjects = relevantProjects;
             this.renderProjects();
         });
-        this.attach();
-        this.renderContent();
     }
     renderProjects() {
         const listElelement = document.getElementById(`${this.type}-projects-list`);
@@ -133,28 +157,19 @@ class ProjectList {
         this.element.querySelector("h2").textContent =
             this.type.toUpperCase() + ` PROJECTS`; //Changes the title of the unordered list
     }
-    attach() {
-        this.hostElement.insertAdjacentElement("afterbegin", this.element); //Define where to attach the element (the form) inside the template
-    }
 }
-class ProjectInput {
+class ProjectInput extends Component {
     constructor() {
-        this.templateElement = document.getElementById("project-input"); //The template-element inside the HTML-file
-        this.hostElement = document.getElementById("app"); //The host-div which will display all informations from the template
-        const importedNode = document.importNode(this.templateElement.content, true); //Imports the content of the template with all nested elements
-        this.element = importedNode.firstElementChild; //Saves the next tag (first child) of the template
-        // Since this element gets created during runtime it does not have an id. Giving
-        // it a id will make sure it gets affected by the css-file
-        this.element.id = "user-input";
+        super("project-input", "app", true, "user-input");
         this.titleInputElement = this.element.querySelector("#title"); //Selects the input-field with the id "title"
         this.descriptionInputElement = this.element.querySelector("#description"); //Selects the input-field with the id "description"
         this.peopleInputElement = this.element.querySelector("#people"); //Selects the input-field with the id "people"
         this.configure();
-        this.attach(); //this function must be called last
     }
-    attach() {
-        this.hostElement.insertAdjacentElement("afterbegin", this.element); //Define where to attach the element (the form) inside the template
+    configure() {
+        this.element.addEventListener("submit", this.submitHandler); //Adds an event-listener (submit) to the class
     }
+    renderContent() { }
     gatherUserInput() {
         //This function either returns a tuple (if-block) or nothing (else-block)
         const enteredTitle = this.titleInputElement.value;
@@ -203,9 +218,6 @@ class ProjectInput {
         this.titleInputElement.value = "";
         this.descriptionInputElement.value = "";
         this.peopleInputElement.value = "";
-    }
-    configure() {
-        this.element.addEventListener("submit", this.submitHandler); //Adds an event-listener (submit) to the class
     }
 }
 __decorate([
