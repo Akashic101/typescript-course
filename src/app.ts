@@ -208,12 +208,15 @@ class ProjectItem
 	}
 
 	@Autobind
-	dragStartHandler(event: DragEvent) { //This fires whenever a drag-event gets started
-		console.log(event);
+	dragStartHandler(event: DragEvent) {
+		//This fires whenever a drag-event gets started
+		event.dataTransfer!.setData("text/plain", this.project.id); //This dataTransfer is only vailable for drag-events
+		event.dataTransfer!.effectAllowed = "move";
 	}
 
-	dragEndHandler(event: DragEvent) { //This fires whenever a drag-event gets ended
-		console.log(event);
+	dragEndHandler(event: DragEvent) {
+		//This fires whenever a drag-event gets ended
+		event.dataTransfer!.getData("text/plain");
 	}
 
 	configure() {
@@ -243,12 +246,18 @@ class ProjectList
 	}
 
 	@Autobind
-	dragOverHandler(_event: DragEvent) {
-		const listElelement = this.element.querySelector("ul")!;
-		listElelement.classList.add("droppable");
+	dragOverHandler(event: DragEvent) {
+		if (event.dataTransfer && event.dataTransfer.types[0] === "text/plain") {
+			//Allows only to drag & Drop plain text
+			event.preventDefault();
+			const listElelement = this.element.querySelector("ul")!;
+			listElelement.classList.add("droppable");
+		}
 	}
 
-	dropHandler(_event: DragEvent) {}
+	dropHandler(event: DragEvent) {
+		console.log(event.dataTransfer!.getData("text/plain")); //Logs the ID of the data being dragged/dropped
+	}
 
 	@Autobind
 	dragLeaveHandler(_event: DragEvent) {

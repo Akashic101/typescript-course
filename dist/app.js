@@ -135,10 +135,13 @@ class ProjectItem extends Component {
         }
     }
     dragStartHandler(event) {
-        console.log(event);
+        //This fires whenever a drag-event gets started
+        event.dataTransfer.setData("text/plain", this.project.id); //This dataTransfer is only vailable for drag-events
+        event.dataTransfer.effectAllowed = "move";
     }
     dragEndHandler(event) {
-        console.log(event);
+        //This fires whenever a drag-event gets ended
+        event.dataTransfer.getData("text/plain");
     }
     configure() {
         this.element.addEventListener("dragstart", this.dragStartHandler); //Here we bind the ProjectItem with the dragStart-Event
@@ -161,11 +164,17 @@ class ProjectList extends Component {
         this.configure();
         this.renderContent();
     }
-    dragOverHandler(_event) {
-        const listElelement = this.element.querySelector("ul");
-        listElelement.classList.add("droppable");
+    dragOverHandler(event) {
+        if (event.dataTransfer && event.dataTransfer.types[0] === "text/plain") {
+            //Allows only to drag & Drop plain text
+            event.preventDefault();
+            const listElelement = this.element.querySelector("ul");
+            listElelement.classList.add("droppable");
+        }
     }
-    dropHandler(_event) { }
+    dropHandler(event) {
+        console.log(event.dataTransfer.getData("text/plain")); //Logs the ID of the data being dragged/dropped
+    }
     dragLeaveHandler(_event) {
         const listElelement = this.element.querySelector("ul");
         listElelement.classList.remove("droppable");
