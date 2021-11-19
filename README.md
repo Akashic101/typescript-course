@@ -205,3 +205,6 @@ https://github.com/Akashic101/typescript-course/tree/6016f477f89eaef69f0aaee7851
 
 ## Part 128: Managing Application State with Singletons
 https://github.com/Akashic101/typescript-course/tree/c3b433950667bf6529381d5e759e6563a815d590
+
+## Part 129: More Classes& Custom Types
+https://github.com/Akashic101/typescript-course/tree/b06ba49f44951eee1adb35cc7c95a33e4f5f8cf9
