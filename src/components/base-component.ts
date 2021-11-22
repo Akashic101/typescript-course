@@ -1,7 +1,6 @@
-/*
-Marking this as default means it is the default export of this file.
-There can only be one default per file
-*/
+// Component Base Class
+
+export const something = '...';
 
 export default abstract class Component<T extends HTMLElement, U extends HTMLElement> {
   templateElement: HTMLTemplateElement;
