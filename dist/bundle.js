@@ -1,14 +1,38 @@
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-// Component Base Class
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+/*
+Marking this as default means it is the default export of this file.
+There can only be one default per file
+*/
 define("components/base-component", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.Component = void 0;
     class Component {
         constructor(templateId, hostElementId, insertAtStart, newElementId) {
             this.templateElement = document.getElementById(templateId);
@@ -24,7 +48,7 @@ define("components/base-component", ["require", "exports"], function (require, e
             this.hostElement.insertAdjacentElement(insertAtBeginning ? 'afterbegin' : 'beforeend', this.element);
         }
     }
-    exports.Component = Component;
+    exports.default = Component;
 });
 define("util/validation", ["require", "exports"], function (require, exports) {
     "use strict";
@@ -140,21 +164,23 @@ define("state/project-state", ["require", "exports", "models/project"], function
     exports.ProjectState = ProjectState;
     exports.projectState = ProjectState.getInstance();
 });
-define("components/project-input", ["require", "exports", "components/base-component", "util/validation", "decorators/autobind", "state/project-state"], function (require, exports, base_component_js_1, validation_js_1, autobind_js_1, project_state_js_1) {
+define("components/project-input", ["require", "exports", "components/base-component", "util/validation", "decorators/autobind", "state/project-state"], function (require, exports, base_component_js_1, Validation, autobind_js_1, project_state_js_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ProjectInput = void 0;
+    base_component_js_1 = __importDefault(base_component_js_1);
+    Validation = __importStar(Validation);
     // With modules you do not need the namespace-tag
-    class ProjectInput extends base_component_js_1.Component {
+    class ProjectInput extends base_component_js_1.default {
         constructor() {
-            super('project-input', 'app', true, 'user-input');
-            this.titleInputElement = this.element.querySelector('#title');
-            this.descriptionInputElement = this.element.querySelector('#description');
-            this.peopleInputElement = this.element.querySelector('#people');
+            super("project-input", "app", true, "user-input");
+            this.titleInputElement = this.element.querySelector("#title");
+            this.descriptionInputElement = this.element.querySelector("#description");
+            this.peopleInputElement = this.element.querySelector("#people");
             this.configure();
         }
         configure() {
-            this.element.addEventListener('submit', this.submitHandler);
+            this.element.addEventListener("submit", this.submitHandler);
         }
         renderContent() { }
         gatherUserInput() {
@@ -162,24 +188,25 @@ define("components/project-input", ["require", "exports", "components/base-compo
             const enteredDescription = this.descriptionInputElement.value;
             const enteredPeople = this.peopleInputElement.value;
             const titleValidatable = {
+                //Now you need to call Validatable like a method from an object
                 value: enteredTitle,
-                required: true
+                required: true,
             };
             const descriptionValidatable = {
                 value: enteredDescription,
                 required: true,
-                minLength: 5
+                minLength: 5,
             };
             const peopleValidatable = {
                 value: +enteredPeople,
                 required: true,
                 min: 1,
-                max: 5
+                max: 5,
             };
-            if (!(0, validation_js_1.validate)(titleValidatable) ||
-                !(0, validation_js_1.validate)(descriptionValidatable) ||
-                !(0, validation_js_1.validate)(peopleValidatable)) {
-                alert('Invalid input, please try again!');
+            if (!Validation.validate(titleValidatable) ||
+                !Validation.validate(descriptionValidatable) ||
+                !Validation.validate(peopleValidatable)) {
+                alert("Invalid input, please try again!");
                 return;
             }
             else {
@@ -187,9 +214,9 @@ define("components/project-input", ["require", "exports", "components/base-compo
             }
         }
         clearInputs() {
-            this.titleInputElement.value = '';
-            this.descriptionInputElement.value = '';
-            this.peopleInputElement.value = '';
+            this.titleInputElement.value = "";
+            this.descriptionInputElement.value = "";
+            this.peopleInputElement.value = "";
         }
         submitHandler(event) {
             event.preventDefault();
@@ -215,8 +242,9 @@ define("components/project-item", ["require", "exports", "components/base-compon
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ProjectItem = void 0;
+    base_component_js_2 = __importDefault(base_component_js_2);
     // ProjectItem Class
-    class ProjectItem extends base_component_js_2.Component {
+    class ProjectItem extends base_component_js_2.default {
         constructor(hostId, project) {
             super('single-project', hostId, false, project.id);
             this.project = project;
@@ -257,8 +285,9 @@ define("components/project-list", ["require", "exports", "models/project", "comp
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ProjectList = void 0;
+    base_component_js_3 = __importDefault(base_component_js_3);
     // ProjectList Class
-    class ProjectList extends base_component_js_3.Component {
+    class ProjectList extends base_component_js_3.default {
         constructor(type) {
             super('project-list', 'app', false, `${type}-projects`);
             this.type = type;
