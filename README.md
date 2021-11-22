@@ -519,3 +519,6 @@ https://github.com/Akashic101/typescript-course/tree/c031d93c43ed7c097df7b5700b8
 
 ## Part 171: Setting Up a Google API Key
 https://github.com/Akashic101/typescript-course/tree/56332e27a92576ec328ab3ec23243d993fd48da5
+
+## Part 172: Using Axios to Fetch Coordinates for an Entered Address
+https://github.com/Akashic101/typescript-course/tree/34114555b8049956944f4c992d4e7ef6f2ee22de
