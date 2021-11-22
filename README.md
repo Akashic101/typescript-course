@@ -506,3 +506,6 @@ https://github.com/Akashic101/typescript-course/tree/6995bc3b3b069271b18299a8b6f
 # Section 12: 3ds Party Libraries & TypeScript
 ## Part 162: Using Javascript (!) Libraries with TypeScript
 https://github.com/Akashic101/typescript-course/tree/479084293eafcf50549a5a3f6a21c35bc6e5d747
+
+## Part 163: Using "declare" as a "Last Resort"
+https://github.com/Akashic101/typescript-course/tree/118ced773da4066e57571b145f5cd1d974b3edd9
