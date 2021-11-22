@@ -509,3 +509,7 @@ https://github.com/Akashic101/typescript-course/tree/479084293eafcf50549a5a3f6a2
 
 ## Part 163: Using "declare" as a "Last Resort"
 https://github.com/Akashic101/typescript-course/tree/118ced773da4066e57571b145f5cd1d974b3edd9
+
+# Section 13: Time to Practise! Let'S build a "Select & Share a Place App (incl. Google Maps)
+## Part 169: Project Setup
+https://github.com/Akashic101/typescript-course/tree/4172bf11506e37a25b830f82978b4347547dd14b
