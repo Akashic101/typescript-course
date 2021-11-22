@@ -229,3 +229,6 @@ https://github.com/Akashic101/typescript-course/tree/8e7bea29b28324affce2016ff42
 
 ## Part 136: Adding a Droppable Area
 https://github.com/Akashic101/typescript-course/tree/dceb3cec6d22658d5e9dff13e4e03a72d0b43006
+
+## Part 139: Finishing Drag & Drop
+https://github.com/Akashic101/typescript-course/tree/746a9a9f5e1451e0742bab5ee85dffa30ae4a888
