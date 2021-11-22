@@ -522,3 +522,6 @@ https://github.com/Akashic101/typescript-course/tree/56332e27a92576ec328ab3ec232
 
 ## Part 172: Using Axios to Fetch Coordinates for an Entered Address
 https://github.com/Akashic101/typescript-course/tree/34114555b8049956944f4c992d4e7ef6f2ee22de
+
+## Part 173: Rendering a Map with Google Maps (incl. Types)
+https://github.com/Akashic101/typescript-course/tree/fb78832646d51a53c99bd11e805d80782fd6a0fd
