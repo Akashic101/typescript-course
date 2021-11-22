@@ -3,7 +3,7 @@ import axios from "axios";
 const form = document.querySelector("form")!;
 const addressInput = document.getElementById("address")! as HTMLInputElement;
 
-const GOOGLE_API_KEY = "AIzaSyD7IJxB1ROF32N_TldLv3HmVXiY2BQu3Sk";
+//const GOOGLE_API_KEY = "AIzaSyDdsumZYrJvI7zHH1jEOFyRVhrHKa-fWEc";
 
 function searchAdressHandler(event: Event) {
 	event.preventDefault();
@@ -35,6 +35,13 @@ function searchAdressHandler(event: Event) {
 			}
 			const coordinates = response.data.results[0].geometry.location;
 			console.log(coordinates);
+
+			const map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+				center: coordinates,
+				zoom: 8,
+			});
+
+			new google.maps.Marker({ position: coordinates, map: map });
 		})
 		.catch((err) => {
 			alert(err.message);
