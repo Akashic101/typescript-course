@@ -1,14 +1,14 @@
 const path = require("path");
+const cleanPlugin = require("clean-webpack-plugin");
 
 module.exports = {
-	mode: "development",
+	mode: "production",
 	entry: "./src/app.ts",
 	output: {
 		filename: "bundle.js",
 		path: path.resolve(__dirname, "dist"),
-		publicPath: "dist",
 	},
-	devtool: "inline-source-map",
+	devtool: "none",
 	module: {
 		rules: [
 			{
@@ -21,4 +21,7 @@ module.exports = {
 	resolve: {
 		extensions: [".ts", ".js"],
 	},
+    plugins: [
+        new cleanPlugin.CleanWebpackPlugin() //Before writing to the dist-folder this plugin will delete all old files there
+    ]
 };
