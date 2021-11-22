@@ -502,3 +502,7 @@ https://github.com/Akashic101/typescript-course/tree/032e23949b2f4e4cfb95793b76f
 
 ## Part 158: Adding a Production Workflow
 https://github.com/Akashic101/typescript-course/tree/6995bc3b3b069271b18299a8b6f654245e32fdf0
+
+# Section 12: 3ds Party Libraries & TypeScript
+## Part 162: Using Javascript (!) Libraries with TypeScript
+https://github.com/Akashic101/typescript-course/tree/479084293eafcf50549a5a3f6a21c35bc6e5d747
