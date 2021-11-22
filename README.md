@@ -513,3 +513,6 @@ https://github.com/Akashic101/typescript-course/tree/118ced773da4066e57571b145f5
 # Section 13: Time to Practise! Let'S build a "Select & Share a Place App (incl. Google Maps)
 ## Part 169: Project Setup
 https://github.com/Akashic101/typescript-course/tree/4172bf11506e37a25b830f82978b4347547dd14b
+
+## Part 170: Getting User Input
+https://github.com/Akashic101/typescript-course/tree/c031d93c43ed7c097df7b5700b89ac417ad6ea18
