@@ -239,3 +239,7 @@ https://github.com/Akashic101/typescript-course/tree/4019b9347b080bccf5ad9844fa3
 
 ## Part 147: Understanding various Imports & Exports Syntax
 https://github.com/Akashic101/typescript-course/tree/3564ffe048c65c01c9e057ff1ca6cefd087df9ff
+
+# Section 11: Using Webpack with Typescript
+## Part 156: Adding Entry & Output Configuration
+https://github.com/Akashic101/typescript-course/tree/1d177510c2664d7024c90f941dca284e6450797b
