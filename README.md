@@ -496,3 +496,9 @@ https://github.com/Akashic101/typescript-course/tree/1d177510c2664d7024c90f941dc
 
 ## Part 156: Adding TypeScript Support with the ts-loader Package
 https://github.com/Akashic101/typescript-course/tree/032e23949b2f4e4cfb95793b76fa235b411a3d11
+
+## Part 157: Finishing the Setup & Adding webpack-dev-server
+https://github.com/Akashic101/typescript-course/tree/032e23949b2f4e4cfb95793b76fa235b411a3d11
+
+## Part 158: Adding a Production Workflow
+https://github.com/Akashic101/typescript-course/tree/6995bc3b3b069271b18299a8b6f654245e32fdf0
