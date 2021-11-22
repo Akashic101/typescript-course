@@ -495,4 +495,4 @@ https://github.com/Akashic101/typescript-course/tree/3564ffe048c65c01c9e057ff1ca
 https://github.com/Akashic101/typescript-course/tree/1d177510c2664d7024c90f941dca284e6450797b
 
 ## Part 156: Adding TypeScript Support with the ts-loader Package
-https://github.com/Akashic101/typescript-course/tree/c1b12a6765a0acabd43710cae3270e6911e3f34c
+https://github.com/Akashic101/typescript-course/tree/032e23949b2f4e4cfb95793b76fa235b411a3d11
