@@ -516,3 +516,6 @@ https://github.com/Akashic101/typescript-course/tree/4172bf11506e37a25b830f82978
 
 ## Part 170: Getting User Input
 https://github.com/Akashic101/typescript-course/tree/c031d93c43ed7c097df7b5700b89ac417ad6ea18
+
+## Part 171: Setting Up a Google API Key
+https://github.com/Akashic101/typescript-course/tree/56332e27a92576ec328ab3ec23243d993fd48da5
