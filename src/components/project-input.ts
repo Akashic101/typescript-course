@@ -1,7 +1,7 @@
-import Cmp from "./base-component.js"; //Since the Class Compontent is marked as default in base-compontent.ts you can import it without curly-braces under any name
-import * as Validation from "../util/validation.js"; //This is called "grouping". You can import everything(*) from a Module and save it as an object
-import { autobind as Autobind } from "../decorators/autobind.js"; //You can also use an Alias when importing something
-import { projectState } from "../state/project-state.js";
+import Cmp from "./base-component"; //Since the Class Compontent is marked as default in base-compontent.ts you can import it without curly-braces under any name
+import * as Validation from "../util/validation"; //This is called "grouping". You can import everything(*) from a Module and save it as an object
+import { autobind as Autobind } from "../decorators/autobind"; //You can also use an Alias when importing something
+import { projectState } from "../state/project-state";
 
 // With modules you do not need the namespace-tag
 export class ProjectInput extends Cmp<HTMLDivElement, HTMLFormElement> {

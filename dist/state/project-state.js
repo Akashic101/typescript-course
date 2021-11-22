@@ -1,4 +1,4 @@
-import { Project, ProjectStatus } from '../models/project.js';
+import { Project, ProjectStatus } from "../models/project";
 class State {
     constructor() {
         this.listeners = [];
@@ -25,7 +25,7 @@ export class ProjectState extends State {
         this.updateListeners();
     }
     moveProject(projectId, newStatus) {
-        const project = this.projects.find(prj => prj.id === projectId);
+        const project = this.projects.find((prj) => prj.id === projectId);
         if (project && project.status !== newStatus) {
             project.status = newStatus;
             this.updateListeners();
