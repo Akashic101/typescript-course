@@ -234,5 +234,8 @@ https://github.com/Akashic101/typescript-course/tree/dceb3cec6d22658d5e9dff13e4e
 https://github.com/Akashic101/typescript-course/tree/746a9a9f5e1451e0742bab5ee85dffa30ae4a888
 
 # Section 10: Modules & Namespaces 
-## Part 147: Using ES Modules
+## Part 146: Using ES Modules
 https://github.com/Akashic101/typescript-course/tree/4019b9347b080bccf5ad9844fa37e603d59a79cd
+
+## Part 147: Understanding various Imports & Exports Syntax
+https://github.com/Akashic101/typescript-course/tree/3564ffe048c65c01c9e057ff1ca6cefd087df9ff
