@@ -525,3 +525,7 @@ https://github.com/Akashic101/typescript-course/tree/34114555b8049956944f4c992d4
 
 ## Part 173: Rendering a Map with Google Maps (incl. Types)
 https://github.com/Akashic101/typescript-course/tree/fb78832646d51a53c99bd11e805d80782fd6a0fd
+
+# Section 14: React.js & TypeScript
+## Part 177: Setting up a React + TypeScript Project
+https://github.com/Akashic101/typescript-course/tree/74cc103f133ea5ce34b0d41214ce1c8fbd31c663
