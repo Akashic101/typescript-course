@@ -277,3 +277,6 @@ https://github.com/Akashic101/typescript-course/tree/fb78832646d51a53c99bd11e805
 # Section 15: Node.js + Express & TypeScript
 ## Part 192: Finished Setup & Working with Types (in Node & Express)
 https://github.com/Akashic101/typescript-course/tree/c6558cfd7db9d4a9a72734aaaaef839fdc471c3c
+
+## Part 193: Adding Middleware & Types
+https://github.com/Akashic101/typescript-course/tree/00036a046a68a93db37d77df6a06175f8f0515d3
