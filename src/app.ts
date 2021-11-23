@@ -1,15 +1,16 @@
-import express, { Request, Response, NextFunction } from "express"; //When using the ES6 import you will get typescript-support
-// const express = require("express"); This is the commonJS import which is default in Node
+import express, { Request, Response, NextFunction } from 'express';
+import { json } from 'body-parser';
 
-import todoRoutes from "./routes/todos";
+import todoRoutes from './routes/todos';
 
 const app = express();
 
-app.use("/todos", todoRoutes);
+app.use(json());
 
-//Error-handling middleware
+app.use('/todos', todoRoutes);
+
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-	res.status(500).json({ message: err.message });
+  res.status(500).json({ message: err.message });
 });
 
 app.listen(3000);
