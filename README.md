@@ -280,3 +280,6 @@ https://github.com/Akashic101/typescript-course/tree/c6558cfd7db9d4a9a72734aaaae
 
 ## Part 193: Adding Middleware & Types
 https://github.com/Akashic101/typescript-course/tree/00036a046a68a93db37d77df6a06175f8f0515d3
+
+##: Part 195: More CRUD Operations
+https://github.com/Akashic101/typescript-course/tree/2c5a8804b8fa77b50b69bd252e63f3396770208c
